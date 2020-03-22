@@ -1,0 +1,76 @@
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+.swiftlint.yml~
+.gitignore~
+*.xcuserstate
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+.DS_Store
+Gemfile.lock
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Exclude temp nibs and swap files
+*~.nib
+*.swp
+
+## Exclude the out directory
+out/*
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Framework
+#
+# Add this line if you want to avoid checking in source code from Carthage and Direct dependencies.
+Frameworks/Direct
+Frameworks/.cached_frameworks.yml
+Frameworks/Carthage/Checkouts
+Frameworks/Carthage/Build
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/#source-control
+
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/README.md
+
+# Custom
+*.orig
+
+## Exclude BuildEnvironment ruby script generated files
+Frontier/AppModules/**/.swiftlint.yml
+Frontier/CoreModules/**/.swiftlint.yml
+SupportFiles/CurrentXcconfigs/*
+Scripts/.Environment.log
+fastlane/fastlane_config.yml
+fastlane/fastlane_provision.yml
+Frontier/Resources/Images/Images.xcassets/AppIcon.appiconset/*.png
+
+# AppCode
+.idea/
+
+# User
+developer_notes/
