@@ -21,6 +21,7 @@ struct Task: Taggable, Ordered {
 }
 
 // MARK: - Inits
+
 extension Task {
     public init(completed: Bool = false, description: String, orderId: Int, creationDate: Date = Date()) {
         self.completed = completed
@@ -31,6 +32,7 @@ extension Task {
 }
 
 // MARK: - Computed properties
+
 extension Task {
     var isOverdue: Bool? {
         guard let deadline = deadline else { return nil }
@@ -39,12 +41,24 @@ extension Task {
 
     var remainingTime: (Int, TimeIntervals)? {
         guard let remaining = deadline?.timeIntervalSinceNow.magnitude else { return nil }
-        if remaining / 60.0 < 1 { return (Int(round(remaining)), .sec ) }
-        if remaining / 3600.0 < 1 { return (Int(round(remaining / 60.0)), .minute ) }
-        if remaining / 86400.0 < 1 { return (Int(round(remaining / 3600.0)), .hour) }
-        if remaining / 604800.0 < 1 { return (Int(round(remaining / 86400.0)), .day) }
-        if remaining / 2592000.0 < 1 { return (Int(round(remaining / 604800.0)), .week) }
-        if remaining / 31536000.0 < 1 { return  (Int(round(remaining / 2592000.0)), .month) }
+        if remaining / 60.0 < 1 {
+            return (Int(round(remaining)), .sec )
+        }
+        if remaining / 3600.0 < 1 {
+            return (Int(round(remaining / 60.0)), .minute )
+        }
+        if remaining / 86400.0 < 1 {
+            return (Int(round(remaining / 3600.0)), .hour)
+        }
+        if remaining / 604800.0 < 1 {
+            return (Int(round(remaining / 86400.0)), .day)
+        }
+        if remaining / 2592000.0 < 1 {
+            return (Int(round(remaining / 604800.0)), .week)
+        }
+        if remaining / 31536000.0 < 1 {
+            return (Int(round(remaining / 2592000.0)), .month)
+        }
         return (Int(round(remaining / 31536000.0)), .year)
     }
 }

@@ -21,7 +21,7 @@ struct TaskView: View {
     }
 }
 
-struct TaskView_Previews: PreviewProvider {
+struct TaskViewPreviews: PreviewProvider {
     static var previews: some View {
         TaskView()
         .previewLayout(.fixed(width: 375, height: 70))

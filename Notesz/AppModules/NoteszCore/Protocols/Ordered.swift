@@ -13,18 +13,18 @@ public protocol Ordered {
     var creationDate: Date { get set }
 }
 
-extension Array where Element:Ordered {
+extension Array where Element: Ordered {
     func orderedById(ascending: Bool) -> [Ordered] {
         if ascending {
-            return self.sorted(by: { $0.orderId == $1.orderId ? $0.creationDate < $1.creationDate : $0.orderId < $1.orderId } )
+            return self.sorted(by: { $0.orderId == $1.orderId ? $0.creationDate < $1.creationDate : $0.orderId < $1.orderId })
         } else {
-            return self.sorted(by: { $0.orderId == $1.orderId ? $0.creationDate > $1.creationDate : $0.orderId > $1.orderId } )
+            return self.sorted(by: { $0.orderId == $1.orderId ? $0.creationDate > $1.creationDate : $0.orderId > $1.orderId })
         }
     }
 
     func orderedByDate(ascending: Bool) -> [Ordered] {
         if ascending {
-            return self.sorted(by: { $0.creationDate == $1.creationDate ? $0.orderId < $1.orderId : $0.creationDate < $1.creationDate } )
+            return self.sorted(by: { $0.creationDate == $1.creationDate ? $0.orderId < $1.orderId : $0.creationDate < $1.creationDate })
         } else {
             return self.sorted(by: { $0.creationDate == $1.creationDate ? $0.orderId > $1.orderId : $0.creationDate > $1.creationDate })
         }

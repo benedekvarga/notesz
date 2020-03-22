@@ -248,6 +248,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D5AF5CF2417E72B0094E276 /* Build configuration list for PBXNativeTarget "Notesz" */;
 			buildPhases = (
+				0D6C34032427D57900FF9FBE /* Linter */,
 				0D5AF5B72417E7290094E276 /* Sources */,
 				0D5AF5B82417E7290094E276 /* Frameworks */,
 				0D5AF5B92417E7290094E276 /* Resources */,
@@ -305,6 +306,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D6C34032427D57900FF9FBE /* Linter */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Linter;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0D5AF5B72417E7290094E276 /* Sources */ = {

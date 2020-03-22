@@ -14,7 +14,7 @@ struct TaskStatusIndicatorView: View {
     }
 }
 
-struct TaskStatusIndicatorView_Previews: PreviewProvider {
+struct TaskStatusIndicatorViewPreviews: PreviewProvider {
     static var previews: some View {
         TaskStatusIndicatorView()
         .previewLayout(.fixed(width: 50, height: 50))

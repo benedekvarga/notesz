@@ -12,7 +12,6 @@ struct Group: Taggable, Ordered {
     public var name: String
     public var orderId: Int
     public var creationDate: Date
-    
     public var projects: [Project]?
     public var tasks: [Task]?
     public var tags: [Tag]?
@@ -28,15 +27,13 @@ extension Group {
 
 extension Group {
     public var duration: Int {
-        get {
-            var count = 0
-            tasks?.forEach {
-                count += ($0.duration ?? 0)
-            }
-            projects?.forEach {
-                count += ($0.duration)
-            }
-            return count
+        var count = 0
+        tasks?.forEach {
+            count += ($0.duration ?? 0)
         }
+        projects?.forEach {
+            count += ($0.duration)
+        }
+        return count
     }
 }

@@ -12,7 +12,7 @@ import UIKit
 extension Double {
     var cgFloat: CGFloat { return CGFloat(self) }
     var int: Int { return Int(self) }
-    var formattedNumericString: String { return NumberFormatter.formatter.string(from: NSNumber(value:self)) ?? "" }
+    var formattedNumericString: String { return NumberFormatter.formatter.string(from: NSNumber(value: self)) ?? "" }
 
     func rounded(toPlaces places: Int) -> Double {
         let divisor = pow(10.0, Double(places))

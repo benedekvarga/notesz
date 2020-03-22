@@ -18,8 +18,11 @@ struct Tag {
 
 extension Tag {
     public var color: UIColor {
-        get {
-            return UIColor(red: CGFloat(redComponent)/255.0, green: CGFloat(greenComponent)/255.0, blue: CGFloat(blueComponent)/255.0, alpha: 1.0)
-        }
+        return UIColor(
+            red: CGFloat(redComponent) / 255.0,
+            green: CGFloat(greenComponent) / 255.0,
+            blue: CGFloat(blueComponent) / 255.0,
+            alpha: 1.0
+        )
     }
 }

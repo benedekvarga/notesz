@@ -18,7 +18,8 @@ public enum LogEvent: String {
 }
 
 /// Provide informative log to console. Default event is `debug` and default isDate is `false`.
-public func log(_ messageElements: Any...,
+public func log(
+    _ messageElements: Any...,
     fileName: String = #file,
     line: Int = #line,
     funcName: String = #function,
@@ -50,14 +51,14 @@ public func errorLog(_ messageElements: Any...) {
     logEvent(messageElements, event: .error)
 }
 
-fileprivate func logEvent(_ messageElements: Any..., event: LogEvent) {
+func logEvent(_ messageElements: Any..., event: LogEvent) {
     let pathComponents = #file.components(separatedBy: "/")
     let extractedFileName = pathComponents.isEmpty ? "" : pathComponents.last!
     let message = messageElements.map { "\($0)" }.joined(separator: " ")
     print("<\(event.rawValue)> - \(message) - at line \(#line),\(extractedFileName)")
 }
 
-fileprivate extension Date {
+extension Date {
     static var dateFormat = "yyyy.MM.dd hh:mm:ss:SSSS"
 
     static var dateFormatter: DateFormatter {

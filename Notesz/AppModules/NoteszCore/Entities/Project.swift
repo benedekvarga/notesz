@@ -13,7 +13,6 @@ struct Project: Taggable, Ordered {
     public var completed: Bool
     public var orderId: Int
     public var creationDate: Date
-    
     public var tasks: [Task]?
     public var alertDate: Date?
     public var deadline: Date?
@@ -31,12 +30,10 @@ extension Project {
 
 extension Project {
     public var duration: Int {
-        get {
-            var count = 0
-            tasks?.forEach {
-                count += ($0.duration ?? 0)
-            }
-            return count
+        var count = 0
+        tasks?.forEach {
+            count += ($0.duration ?? 0)
         }
+        return count
     }
 }
