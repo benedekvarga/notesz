@@ -28,7 +28,7 @@ public func log(
     let pathComponents = fileName.components(separatedBy: "/")
     let extractedFileName = pathComponents.isEmpty ? "" : pathComponents.last!
     let message = messageElements.map { "\($0)" }.joined(separator: " ")
-    print("<\(event.rawValue)> - \(message) - at line \(line) in \(funcName),\(extractedFileName)\(isDate ? " - \(Date().toString())" : "")")
+    print("<\(event.rawValue)> - \(message) - at line \(line) in \(funcName), \(extractedFileName)\(isDate ? " - \(Date().toString())" : "")")
 }
 
 public func infoLog(_ messageElements: Any...) {
@@ -55,7 +55,7 @@ func logEvent(_ messageElements: Any..., event: LogEvent) {
     let pathComponents = #file.components(separatedBy: "/")
     let extractedFileName = pathComponents.isEmpty ? "" : pathComponents.last!
     let message = messageElements.map { "\($0)" }.joined(separator: " ")
-    print("<\(event.rawValue)> - \(message) - at line \(#line),\(extractedFileName)")
+    print("<\(event.rawValue)> - \(message) - at line \(#line), \(extractedFileName)")
 }
 
 extension Date {
