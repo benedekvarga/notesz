@@ -23,7 +23,6 @@
 		0D5AF6372417F14E0094E276 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AF62E2417F14E0094E276 /* Logger.swift */; };
 		0D5AF6382417F14E0094E276 /* Int+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AF62F2417F14E0094E276 /* Int+Exts.swift */; };
 		0D5AF63A2417F14E0094E276 /* CGFloat+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AF6312417F14E0094E276 /* CGFloat+Exts.swift */; };
-		0D5AF63B2417F14E0094E276 /* UIView+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AF6322417F14E0094E276 /* UIView+Exts.swift */; };
 		0D5AF63C2417F14E0094E276 /* String+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AF6332417F14E0094E276 /* String+Exts.swift */; };
 		0D5AF63D2417F14E0094E276 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AF6342417F14E0094E276 /* System.swift */; };
 		0D5AF63E2417F14E0094E276 /* NumberFormatter+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AF6352417F14E0094E276 /* NumberFormatter+Exts.swift */; };
@@ -38,6 +37,10 @@
 		0D93AC37242A1429007057E0 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93AC36242A1429007057E0 /* TaskView.swift */; };
 		0D93AC39242A1435007057E0 /* TaskModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93AC38242A1435007057E0 /* TaskModels.swift */; };
 		0DADC5D2241816930077F2EE /* TaskStatusIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DADC5D1241816930077F2EE /* TaskStatusIndicatorView.swift */; };
+		0DBB8C28243CC75700B415E8 /* UIColor+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB8C27243CC75700B415E8 /* UIColor+Exts.swift */; };
+		0DBB8C2B243CC9BF00B415E8 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB8C2A243CC9BF00B415E8 /* RootViewModel.swift */; };
+		0DBB8C2F243CCA0800B415E8 /* RootInputModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB8C2E243CCA0800B415E8 /* RootInputModelProtocol.swift */; };
+		0DBB8C31243CCA3400B415E8 /* RootViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB8C30243CCA3400B415E8 /* RootViewModelProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +62,6 @@
 		0D5AF62E2417F14E0094E276 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		0D5AF62F2417F14E0094E276 /* Int+Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Exts.swift"; sourceTree = "<group>"; };
 		0D5AF6312417F14E0094E276 /* CGFloat+Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Exts.swift"; sourceTree = "<group>"; };
-		0D5AF6322417F14E0094E276 /* UIView+Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Exts.swift"; sourceTree = "<group>"; };
 		0D5AF6332417F14E0094E276 /* String+Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Exts.swift"; sourceTree = "<group>"; };
 		0D5AF6342417F14E0094E276 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		0D5AF6352417F14E0094E276 /* NumberFormatter+Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Exts.swift"; sourceTree = "<group>"; };
@@ -74,6 +76,10 @@
 		0D93AC36242A1429007057E0 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		0D93AC38242A1435007057E0 /* TaskModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModels.swift; sourceTree = "<group>"; };
 		0DADC5D1241816930077F2EE /* TaskStatusIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusIndicatorView.swift; sourceTree = "<group>"; };
+		0DBB8C27243CC75700B415E8 /* UIColor+Exts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Exts.swift"; sourceTree = "<group>"; };
+		0DBB8C2A243CC9BF00B415E8 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		0DBB8C2E243CCA0800B415E8 /* RootInputModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInputModelProtocol.swift; sourceTree = "<group>"; };
+		0DBB8C30243CCA3400B415E8 /* RootViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModelProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +154,9 @@
 		0D5AF5F62417E9550094E276 /* CoreModules */ = {
 			isa = PBXGroup;
 			children = (
-				0D5AF5FA2417ED010094E276 /* Utils */,
+				0DBB8C29243CC9A800B415E8 /* Architecture */,
+				0D5AF61F2417EFB60094E276 /* Utility */,
+				0D5AF61E2417EFB00094E276 /* Extensions */,
 			);
 			path = CoreModules;
 			sourceTree = "<group>";
@@ -169,15 +177,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		0D5AF5FA2417ED010094E276 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				0D5AF61F2417EFB60094E276 /* Services */,
-				0D5AF61E2417EFB00094E276 /* Extensions */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		0D5AF5FB2417ED070094E276 /* NoteszCore */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,18 +195,18 @@
 				0D5AF62F2417F14E0094E276 /* Int+Exts.swift */,
 				0D5AF6352417F14E0094E276 /* NumberFormatter+Exts.swift */,
 				0D5AF6332417F14E0094E276 /* String+Exts.swift */,
-				0D5AF6322417F14E0094E276 /* UIView+Exts.swift */,
+				0DBB8C27243CC75700B415E8 /* UIColor+Exts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		0D5AF61F2417EFB60094E276 /* Services */ = {
+		0D5AF61F2417EFB60094E276 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				0D5AF62E2417F14E0094E276 /* Logger.swift */,
 				0D5AF6342417F14E0094E276 /* System.swift */,
 			);
-			path = Services;
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		0D5AF6402417F1590094E276 /* Entities */ = {
@@ -308,6 +307,16 @@
 				0D6C34062427DA7C00FF9FBE /* CanvasView */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		0DBB8C29243CC9A800B415E8 /* Architecture */ = {
+			isa = PBXGroup;
+			children = (
+				0DBB8C30243CCA3400B415E8 /* RootViewModelProtocol.swift */,
+				0DBB8C2A243CC9BF00B415E8 /* RootViewModel.swift */,
+				0DBB8C2E243CCA0800B415E8 /* RootInputModelProtocol.swift */,
+			);
+			path = Architecture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,19 +420,22 @@
 				0D5AF6382417F14E0094E276 /* Int+Exts.swift in Sources */,
 				0D5AF63E2417F14E0094E276 /* NumberFormatter+Exts.swift in Sources */,
 				0D5AF5BF2417E7290094E276 /* AppDelegate.swift in Sources */,
+				0DBB8C28243CC75700B415E8 /* UIColor+Exts.swift in Sources */,
 				0D6C34052427D92A00FF9FBE /* CanvasView.swift in Sources */,
 				0D5AF63F2417F14E0094E276 /* Double+Exts.swift in Sources */,
 				0D5AF6272417F1270094E276 /* Task.swift in Sources */,
 				0D6C34082427DBB200FF9FBE /* PKCanvasViewRepresentable.swift in Sources */,
 				0D93AC22242A120D007057E0 /* TaskListViewModel.swift in Sources */,
 				0D5AF5C12417E7290094E276 /* SceneDelegate.swift in Sources */,
+				0DBB8C2F243CCA0800B415E8 /* RootInputModelProtocol.swift in Sources */,
 				0D5AF62C2417F13A0094E276 /* Taggable.swift in Sources */,
 				0D93AC37242A1429007057E0 /* TaskView.swift in Sources */,
-				0D5AF63B2417F14E0094E276 /* UIView+Exts.swift in Sources */,
 				0D93AC33242A1406007057E0 /* TaskViewModel.swift in Sources */,
 				0D93AC24242A1220007057E0 /* TaskListModels.swift in Sources */,
 				0D5AF6292417F1270094E276 /* TimeIntervals.swift in Sources */,
+				0DBB8C2B243CC9BF00B415E8 /* RootViewModel.swift in Sources */,
 				0D5AF62D2417F13A0094E276 /* Ordered.swift in Sources */,
+				0DBB8C31243CCA3400B415E8 /* RootViewModelProtocol.swift in Sources */,
 				0DADC5D2241816930077F2EE /* TaskStatusIndicatorView.swift in Sources */,
 				0D65CEDC24222C6600E11D0A /* UIColor+exts.swift in Sources */,
 				0D5AF6282417F1270094E276 /* Group.swift in Sources */,

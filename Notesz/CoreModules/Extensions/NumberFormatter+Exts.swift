@@ -1,6 +1,5 @@
 //
 //  NumberFormatter.swift
-//  Utility
 //
 //  Created by Benedek Varga on 2019. 03. 04..
 //  Copyright © 2019. Benedek Varga. All rights reserved.

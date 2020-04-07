@@ -32,30 +32,38 @@ public func log(
 }
 
 public func infoLog(_ messageElements: Any...) {
-    logEvent(messageElements, event: .info)
-}
-
-public func networkLog(_ messageElements: Any...) {
-    logEvent(messageElements, event: .network)
-}
-
-public func debugLog(_ messageElements: Any...) {
-    logEvent(messageElements, event: .debug)
-}
-
-public func warningLog(_ messageElements: Any...) {
-    logEvent(messageElements, event: .warning)
-}
-
-public func errorLog(_ messageElements: Any...) {
-    logEvent(messageElements, event: .error)
-}
-
-func logEvent(_ messageElements: Any..., event: LogEvent) {
     let pathComponents = #file.components(separatedBy: "/")
     let extractedFileName = pathComponents.isEmpty ? "" : pathComponents.last!
     let message = messageElements.map { "\($0)" }.joined(separator: " ")
-    print("<\(event.rawValue)> - \(message) - at line \(#line), \(extractedFileName)")
+    print("<\(LogEvent.info.rawValue)> - \(message) - at line \(#line), \(extractedFileName)")
+}
+
+public func networkLog(_ messageElements: Any...) {
+    let pathComponents = #file.components(separatedBy: "/")
+    let extractedFileName = pathComponents.isEmpty ? "" : pathComponents.last!
+    let message = messageElements.map { "\($0)" }.joined(separator: " ")
+    print("<\(LogEvent.network.rawValue)> - \(message) - at line \(#line), \(extractedFileName)")
+}
+
+public func debugLog(_ messageElements: Any...) {
+    let pathComponents = #file.components(separatedBy: "/")
+    let extractedFileName = pathComponents.isEmpty ? "" : pathComponents.last!
+    let message = messageElements.map { "\($0)" }.joined(separator: " ")
+    print("<\(LogEvent.debug.rawValue)> - \(message) - at line \(#line), \(extractedFileName)")
+}
+
+public func warningLog(_ messageElements: Any...) {
+    let pathComponents = #file.components(separatedBy: "/")
+    let extractedFileName = pathComponents.isEmpty ? "" : pathComponents.last!
+    let message = messageElements.map { "\($0)" }.joined(separator: " ")
+    print("<\(LogEvent.warning.rawValue)> - \(message) - at line \(#line), \(extractedFileName)")
+}
+
+public func errorLog(_ messageElements: Any...) {
+    let pathComponents = #file.components(separatedBy: "/")
+    let extractedFileName = pathComponents.isEmpty ? "" : pathComponents.last!
+    let message = messageElements.map { "\($0)" }.joined(separator: " ")
+    print("<\(LogEvent.error.rawValue)> - \(message) - at line \(#line), \(extractedFileName)")
 }
 
 extension Date {
