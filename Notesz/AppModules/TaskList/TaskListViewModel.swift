@@ -16,9 +16,51 @@ class TaskListViewModel: ObservableObject, Identifiable {
 
     init() {
         self.dataSource = [
-            TaskViewModel(),
-            TaskViewModel(),
-            TaskViewModel()
+            TaskViewModel(inputModel:
+                TaskInputModel(
+                    writtenData: nil,
+                    typedData: nil,
+                    description: nil,
+                    tags: [],
+                    alertDate: nil,
+                    deadlineData: nil)
+            ),
+            TaskViewModel(inputModel:
+                TaskInputModel(
+                    writtenData: nil,
+                    typedData: nil,
+                    description: nil,
+                    tags: [],
+                    alertDate: nil,
+                    deadlineData: nil)
+            ),
+            TaskViewModel(inputModel:
+                TaskInputModel(
+                    writtenData: nil,
+                    typedData: nil,
+                    description: nil,
+                    tags: [],
+                    alertDate: nil,
+                    deadlineData: nil)
+            ),
+            TaskViewModel(inputModel:
+                TaskInputModel(
+                    writtenData: nil,
+                    typedData: nil,
+                    description: nil,
+                    tags: [],
+                    alertDate: nil,
+                    deadlineData: nil)
+            ),
+            TaskViewModel(inputModel:
+                TaskInputModel(
+                    writtenData: nil,
+                    typedData: nil,
+                    description: nil,
+                    tags: [],
+                    alertDate: nil,
+                    deadlineData: nil)
+            )
         ]
     }
 }

@@ -13,6 +13,8 @@ struct PKCanvasViewRepresentable: UIViewRepresentable {
 
     func makeUIView(context: Context) -> PKCanvasView {
         let canvasView = PKCanvasView()
+        canvasView.layer.masksToBounds = false
+        canvasView.allowsFingerDrawing = false
         return canvasView
     }
 

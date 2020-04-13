@@ -9,11 +9,12 @@
 import Foundation
 
 struct Task: Taggable, Ordered {
+    public var writtenData: Data?
+    public var typedData: String?
+    public var description: String?
     public var completed: Bool
     public var creationDate: Date
-    public var description: String
     public var orderId: Int
-
     public var duration: Int?
     public var alertDate: Date?
     public var deadline: Date?

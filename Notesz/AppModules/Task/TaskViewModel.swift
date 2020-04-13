@@ -5,20 +5,23 @@
 //  Created by Benedek Varga on 2020. 03. 24..
 //
 import Combine
+import Foundation
 
-class TaskViewModel: ObservableObject, Identifiable {
-    // MARK: - Properties
+class TaskViewModel: RootViewModel, ObservableObject, Identifiable {
+    @Published public var writtenData: Data?
+    @Published public var typedData: String?
+    @Published public var description: String
+    @Published public var tags: [Tag] = []
+    @Published public var alertText: String
+    @Published public var deadlineText: String
 
-    @Published var task: String
-    private var disposables = Set<AnyCancellable>()
+    init(inputModel: TaskInputModelProtocol) {
+        self.writtenData = inputModel.writtenData
+        self.typedData = inputModel.typedData
+        self.description = inputModel.description ?? "Add more info"
+        self.alertText = inputModel.alertDate?.formattedDateString(format: "dd. MM. YYYY. - hh:mm") ?? "Notify me"
+        self.deadlineText = inputModel.alertDate?.formattedDateString(format: "dd. MM. YYYY. - hh:mm") ?? "Set deadline"
 
-    // MARK: - Initialization
-
-    init(task: Task) {
-        self.task = task.description
-    }
-
-    init() {
-        self.task = "It's a dummy task."
+        super.init(inputView: inputModel)
     }
 }
