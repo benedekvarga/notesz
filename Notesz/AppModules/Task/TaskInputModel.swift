@@ -12,7 +12,6 @@ struct TaskInputModel: TaskInputModelProtocol {
 
     var writtenData: Data?
     var typedData: String?
-    var description: String?
     var tags: [Tag]
     var alertDate: Date?
     var deadlineData: Date?

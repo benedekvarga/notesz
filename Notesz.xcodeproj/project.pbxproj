@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,9 +30,16 @@
 		0D65CEDC24222C6600E11D0A /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D65CEDB24222C6600E11D0A /* AppColors.swift */; };
 		0D6C34052427D92A00FF9FBE /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C34042427D92A00FF9FBE /* CanvasView.swift */; };
 		0D6C34082427DBB200FF9FBE /* PKCanvasViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C34072427DBB200FF9FBE /* PKCanvasViewRepresentable.swift */; };
+		0D8C7F96244B7482006E434F /* SmoothCanvasSPM in Frameworks */ = {isa = PBXBuildFile; productRef = 0D8C7F95244B7482006E434F /* SmoothCanvasSPM */; };
+		0D8C7F99244C51E3006E434F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C7F98244C51E3006E434F /* MenuView.swift */; };
+		0D8C7F9B244C51F6006E434F /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C7F9A244C51F6006E434F /* MenuViewModel.swift */; };
+		0D8C7F9E244C883B006E434F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C7F9D244C883B006E434F /* MainViewModel.swift */; };
+		0D8C7FA0244C8845006E434F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C7F9F244C8845006E434F /* MainView.swift */; };
+		0D8C7FA3244C892C006E434F /* CompareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C7FA2244C892C006E434F /* CompareViewModel.swift */; };
+		0D8C7FA5244C8945006E434F /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C7FA4244C8945006E434F /* CompareView.swift */; };
+		0D8C7FA8244C89C9006E434F /* SmoothCanvasRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C7FA7244C89C9006E434F /* SmoothCanvasRepresentable.swift */; };
 		0D93AC20242A11FF007057E0 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93AC1F242A11FF007057E0 /* TaskListView.swift */; };
 		0D93AC22242A120D007057E0 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93AC21242A120D007057E0 /* TaskListViewModel.swift */; };
-		0D93AC24242A1220007057E0 /* TaskListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93AC23242A1220007057E0 /* TaskListModels.swift */; };
 		0D93AC33242A1406007057E0 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93AC32242A1406007057E0 /* TaskViewModel.swift */; };
 		0D93AC37242A1429007057E0 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93AC36242A1429007057E0 /* TaskView.swift */; };
 		0DADC5D2241816930077F2EE /* TaskStatusIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DADC5D1241816930077F2EE /* TaskStatusIndicatorView.swift */; };
@@ -71,9 +78,15 @@
 		0D65CEDB24222C6600E11D0A /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		0D6C34042427D92A00FF9FBE /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		0D6C34072427DBB200FF9FBE /* PKCanvasViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCanvasViewRepresentable.swift; sourceTree = "<group>"; };
+		0D8C7F98244C51E3006E434F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		0D8C7F9A244C51F6006E434F /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		0D8C7F9D244C883B006E434F /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		0D8C7F9F244C8845006E434F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		0D8C7FA2244C892C006E434F /* CompareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareViewModel.swift; sourceTree = "<group>"; };
+		0D8C7FA4244C8945006E434F /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
+		0D8C7FA7244C89C9006E434F /* SmoothCanvasRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoothCanvasRepresentable.swift; sourceTree = "<group>"; };
 		0D93AC1F242A11FF007057E0 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		0D93AC21242A120D007057E0 /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
-		0D93AC23242A1220007057E0 /* TaskListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListModels.swift; sourceTree = "<group>"; };
 		0D93AC32242A1406007057E0 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		0D93AC36242A1429007057E0 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		0DADC5D1241816930077F2EE /* TaskStatusIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusIndicatorView.swift; sourceTree = "<group>"; };
@@ -91,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D8C7F96244B7482006E434F /* SmoothCanvasSPM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +161,9 @@
 		0D5AF5F52417E94C0094E276 /* AppModules */ = {
 			isa = PBXGroup;
 			children = (
+				0D8C7FA1244C8918006E434F /* Compare */,
+				0D8C7F9C244C87F8006E434F /* Main */,
+				0D8C7F97244C51CF006E434F /* Menu */,
 				0D93AC31242A13D9007057E0 /* Task */,
 				0D93AC1E242A11E5007057E0 /* TaskList */,
 				0D5AF5FB2417ED070094E276 /* NoteszCore */,
@@ -251,12 +268,46 @@
 			path = CanvasView;
 			sourceTree = "<group>";
 		};
+		0D8C7F97244C51CF006E434F /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				0D8C7F98244C51E3006E434F /* MenuView.swift */,
+				0D8C7F9A244C51F6006E434F /* MenuViewModel.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		0D8C7F9C244C87F8006E434F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0D8C7F9D244C883B006E434F /* MainViewModel.swift */,
+				0D8C7F9F244C8845006E434F /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		0D8C7FA1244C8918006E434F /* Compare */ = {
+			isa = PBXGroup;
+			children = (
+				0D8C7FA2244C892C006E434F /* CompareViewModel.swift */,
+				0D8C7FA4244C8945006E434F /* CompareView.swift */,
+			);
+			path = Compare;
+			sourceTree = "<group>";
+		};
+		0D8C7FA6244C89A2006E434F /* SmoothCanvasView */ = {
+			isa = PBXGroup;
+			children = (
+				0D8C7FA7244C89C9006E434F /* SmoothCanvasRepresentable.swift */,
+			);
+			path = SmoothCanvasView;
+			sourceTree = "<group>";
+		};
 		0D93AC1E242A11E5007057E0 /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
 				0D93AC1F242A11FF007057E0 /* TaskListView.swift */,
 				0D93AC21242A120D007057E0 /* TaskListViewModel.swift */,
-				0D93AC23242A1220007057E0 /* TaskListModels.swift */,
 			);
 			path = TaskList;
 			sourceTree = "<group>";
@@ -309,6 +360,7 @@
 		0DADC5CE241811160077F2EE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0D8C7FA6244C89A2006E434F /* SmoothCanvasView */,
 				0D93AC3A242A1555007057E0 /* Components */,
 				0D6C34062427DA7C00FF9FBE /* CanvasView */,
 			);
@@ -350,6 +402,9 @@
 			dependencies = (
 			);
 			name = Notesz;
+			packageProductDependencies = (
+				0D8C7F95244B7482006E434F /* SmoothCanvasSPM */,
+			);
 			productName = Notesz;
 			productReference = 0D5AF5BB2417E7290094E276 /* Notesz.app */;
 			productType = "com.apple.product-type.application";
@@ -377,6 +432,9 @@
 				Base,
 			);
 			mainGroup = 0D5AF5B22417E7290094E276;
+			packageReferences = (
+				0D8C7F94244B7482006E434F /* XCRemoteSwiftPackageReference "SmoothCanvasSPM" */,
+			);
 			productRefGroup = 0D5AF5BC2417E7290094E276 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -425,13 +483,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D8C7F9E244C883B006E434F /* MainViewModel.swift in Sources */,
+				0D8C7FA0244C8845006E434F /* MainView.swift in Sources */,
 				0D5AF6262417F1270094E276 /* Tag.swift in Sources */,
 				0D5AF6372417F14E0094E276 /* Logger.swift in Sources */,
 				0D5AF63D2417F14E0094E276 /* System.swift in Sources */,
+				0D8C7FA3244C892C006E434F /* CompareViewModel.swift in Sources */,
 				0DBD20C42444B00800E03920 /* TaskInputModel.swift in Sources */,
 				0D5AF63A2417F14E0094E276 /* CGFloat+Exts.swift in Sources */,
 				0D5AF6252417F1270094E276 /* Project.swift in Sources */,
 				0D5AF6382417F14E0094E276 /* Int+Exts.swift in Sources */,
+				0D8C7F99244C51E3006E434F /* MenuView.swift in Sources */,
+				0D8C7F9B244C51F6006E434F /* MenuViewModel.swift in Sources */,
+				0D8C7FA8244C89C9006E434F /* SmoothCanvasRepresentable.swift in Sources */,
 				0DBD20C62444D9E300E03920 /* Date+Exts.swift in Sources */,
 				0D5AF63E2417F14E0094E276 /* NumberFormatter+Exts.swift in Sources */,
 				0D5AF5BF2417E7290094E276 /* AppDelegate.swift in Sources */,
@@ -446,7 +510,7 @@
 				0D5AF62C2417F13A0094E276 /* Taggable.swift in Sources */,
 				0D93AC37242A1429007057E0 /* TaskView.swift in Sources */,
 				0D93AC33242A1406007057E0 /* TaskViewModel.swift in Sources */,
-				0D93AC24242A1220007057E0 /* TaskListModels.swift in Sources */,
+				0D8C7FA5244C8945006E434F /* CompareView.swift in Sources */,
 				0D5AF6292417F1270094E276 /* TimeIntervals.swift in Sources */,
 				0DBB8C2B243CC9BF00B415E8 /* RootViewModel.swift in Sources */,
 				0D5AF62D2417F13A0094E276 /* Ordered.swift in Sources */,
@@ -651,6 +715,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0D8C7F94244B7482006E434F /* XCRemoteSwiftPackageReference "SmoothCanvasSPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/benedekvarga/SmoothCanvasSPM";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0D8C7F95244B7482006E434F /* SmoothCanvasSPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D8C7F94244B7482006E434F /* XCRemoteSwiftPackageReference "SmoothCanvasSPM" */;
+			productName = SmoothCanvasSPM;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0D5AF5B32417E7290094E276 /* Project object */;
 }

@@ -11,7 +11,6 @@ import Foundation
 struct Task: Taggable, Ordered {
     public var writtenData: Data?
     public var typedData: String?
-    public var description: String?
     public var completed: Bool
     public var creationDate: Date
     public var orderId: Int
@@ -24,9 +23,8 @@ struct Task: Taggable, Ordered {
 // MARK: - Inits
 
 extension Task {
-    public init(completed: Bool = false, description: String, orderId: Int, creationDate: Date = Date()) {
+    public init(completed: Bool = false, orderId: Int, creationDate: Date = Date()) {
         self.completed = completed
-        self.description = description
         self.orderId = orderId
         self.creationDate = creationDate
     }

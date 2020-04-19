@@ -13,6 +13,9 @@ struct TaskView: View, RootViewProtocol {
 
     @ObservedObject private var viewModel: TaskViewModel
     @State private var isHighlighted = false
+    @State var showDatePicker = false
+    @State var notifySelected = true
+    @State var selectedDate = Date()
 
     // MARK: - RootViewProtocol properties
 
@@ -41,18 +44,30 @@ struct TaskView: View, RootViewProtocol {
 
             if self.$isHighlighted.wrappedValue {
                 VStack(alignment: .leading) {
-                    Text(viewModel.description)
-                        .font(.subheadline)
                     HStack {
                         Image(systemName: "bell")
                         Text(viewModel.alertText)
                             .font(.subheadline)
-                            .font(.caption)
+                            .onTapGesture {
+                                if !self.$showDatePicker.wrappedValue {
+                                    self.$showDatePicker.wrappedValue.toggle()
+                                }
+                            }
                     }
                     HStack {
                         Image(systemName: "calendar")
                         Text(viewModel.deadlineText)
                             .font(.subheadline)
+                            .onTapGesture {
+                                if !self.$showDatePicker.wrappedValue {
+                                    self.$showDatePicker.wrappedValue.toggle()
+                                }
+                            }
+                    }
+                    if self.showDatePicker {
+                        DatePicker(selection: $selectedDate, in: Date()..., displayedComponents: .date) {
+                            Text("")
+                        }
                     }
                 }
                 .padding(.leading, 48)
@@ -75,7 +90,6 @@ struct TaskViewPreviews: PreviewProvider {
                 TaskInputModel(
                     writtenData: nil,
                     typedData: nil,
-                    description: nil,
                     tags: [],
                     alertDate: nil,
                     deadlineData: nil

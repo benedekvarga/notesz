@@ -20,7 +20,6 @@ class TaskListViewModel: ObservableObject, Identifiable {
                 TaskInputModel(
                     writtenData: nil,
                     typedData: nil,
-                    description: nil,
                     tags: [],
                     alertDate: nil,
                     deadlineData: nil)
@@ -29,7 +28,6 @@ class TaskListViewModel: ObservableObject, Identifiable {
                 TaskInputModel(
                     writtenData: nil,
                     typedData: nil,
-                    description: nil,
                     tags: [],
                     alertDate: nil,
                     deadlineData: nil)
@@ -38,7 +36,6 @@ class TaskListViewModel: ObservableObject, Identifiable {
                 TaskInputModel(
                     writtenData: nil,
                     typedData: nil,
-                    description: nil,
                     tags: [],
                     alertDate: nil,
                     deadlineData: nil)
@@ -47,7 +44,6 @@ class TaskListViewModel: ObservableObject, Identifiable {
                 TaskInputModel(
                     writtenData: nil,
                     typedData: nil,
-                    description: nil,
                     tags: [],
                     alertDate: nil,
                     deadlineData: nil)
@@ -56,7 +52,6 @@ class TaskListViewModel: ObservableObject, Identifiable {
                 TaskInputModel(
                     writtenData: nil,
                     typedData: nil,
-                    description: nil,
                     tags: [],
                     alertDate: nil,
                     deadlineData: nil)
