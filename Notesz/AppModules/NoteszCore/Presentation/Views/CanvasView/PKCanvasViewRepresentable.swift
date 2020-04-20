@@ -12,6 +12,7 @@ struct PKCanvasViewRepresentable: UIViewRepresentable {
     // MARK: - Properties
 
     @Binding var shouldClearData: Int
+    @Binding var penColor: UIColor
 
     // MARK: - UIViewRepresentable functions
 
@@ -26,5 +27,7 @@ struct PKCanvasViewRepresentable: UIViewRepresentable {
         if shouldClearData > 0 {
             uiView.drawing = PKDrawing()
         }
+
+        uiView.tool = PKInkingTool(.pen, color: penColor, width: 2)
     }
 }

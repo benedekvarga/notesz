@@ -49,6 +49,7 @@
 		0DBD20C22444AFF300E03920 /* TaskInputModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD20C12444AFF300E03920 /* TaskInputModelProtocol.swift */; };
 		0DBD20C42444B00800E03920 /* TaskInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD20C32444B00800E03920 /* TaskInputModel.swift */; };
 		0DBD20C62444D9E300E03920 /* Date+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD20C52444D9E300E03920 /* Date+Exts.swift */; };
+		0DD984C0244DEF8F00AA6F55 /* UIColor+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD984BF244DEF8F00AA6F55 /* UIColor+Exts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 		0DBD20C12444AFF300E03920 /* TaskInputModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInputModelProtocol.swift; sourceTree = "<group>"; };
 		0DBD20C32444B00800E03920 /* TaskInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInputModel.swift; sourceTree = "<group>"; };
 		0DBD20C52444D9E300E03920 /* Date+Exts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Exts.swift"; sourceTree = "<group>"; };
+		0DD984BF244DEF8F00AA6F55 /* UIColor+Exts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Exts.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 				0D5AF6352417F14E0094E276 /* NumberFormatter+Exts.swift */,
 				0D5AF6332417F14E0094E276 /* String+Exts.swift */,
 				0DBD20C52444D9E300E03920 /* Date+Exts.swift */,
+				0DD984BF244DEF8F00AA6F55 /* UIColor+Exts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				0D8C7F9B244C51F6006E434F /* MenuViewModel.swift in Sources */,
 				0D8C7FA8244C89C9006E434F /* SmoothCanvasRepresentable.swift in Sources */,
 				0DBD20C62444D9E300E03920 /* Date+Exts.swift in Sources */,
+				0DD984C0244DEF8F00AA6F55 /* UIColor+Exts.swift in Sources */,
 				0D5AF63E2417F14E0094E276 /* NumberFormatter+Exts.swift in Sources */,
 				0D5AF5BF2417E7290094E276 /* AppDelegate.swift in Sources */,
 				0D5AF63F2417F14E0094E276 /* Double+Exts.swift in Sources */,

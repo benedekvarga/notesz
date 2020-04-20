@@ -12,6 +12,7 @@ struct SmoothCanvasRepresentable: UIViewRepresentable {
     // MARK: - Properties
 
     @Binding var shouldClearData: Int
+    @Binding var penColor: UIColor
 
     // MARK: - UIViewRepresentable functions
 
@@ -28,5 +29,7 @@ struct SmoothCanvasRepresentable: UIViewRepresentable {
         if shouldClearData > 0 {
             uiView.clearCanvas()
         }
+
+        uiView.lineColor = penColor
     }
 }
