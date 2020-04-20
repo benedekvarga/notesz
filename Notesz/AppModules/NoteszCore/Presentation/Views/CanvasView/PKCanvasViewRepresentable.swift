@@ -9,6 +9,10 @@ import SwiftUI
 import PencilKit
 
 struct PKCanvasViewRepresentable: UIViewRepresentable {
+    // MARK: - Properties
+
+    @Binding var shouldClearData: Int
+
     // MARK: - UIViewRepresentable functions
 
     func makeUIView(context: Context) -> PKCanvasView {
@@ -19,6 +23,8 @@ struct PKCanvasViewRepresentable: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: PKCanvasView, context: Context) {
-        infoLog("Canvas updated.")
+        if shouldClearData > 0 {
+            uiView.drawing = PKDrawing()
+        }
     }
 }

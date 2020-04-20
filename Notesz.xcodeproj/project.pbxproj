@@ -28,7 +28,6 @@
 		0D5AF63F2417F14E0094E276 /* Double+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AF6362417F14E0094E276 /* Double+Exts.swift */; };
 		0D62E0AD243F01F100B56B17 /* Color+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D62E0AC243F01F100B56B17 /* Color+Exts.swift */; };
 		0D65CEDC24222C6600E11D0A /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D65CEDB24222C6600E11D0A /* AppColors.swift */; };
-		0D6C34052427D92A00FF9FBE /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C34042427D92A00FF9FBE /* CanvasView.swift */; };
 		0D6C34082427DBB200FF9FBE /* PKCanvasViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6C34072427DBB200FF9FBE /* PKCanvasViewRepresentable.swift */; };
 		0D8C7F96244B7482006E434F /* SmoothCanvasSPM in Frameworks */ = {isa = PBXBuildFile; productRef = 0D8C7F95244B7482006E434F /* SmoothCanvasSPM */; };
 		0D8C7F99244C51E3006E434F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C7F98244C51E3006E434F /* MenuView.swift */; };
@@ -76,7 +75,6 @@
 		0D5AF6362417F14E0094E276 /* Double+Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Exts.swift"; sourceTree = "<group>"; };
 		0D62E0AC243F01F100B56B17 /* Color+Exts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Exts.swift"; sourceTree = "<group>"; };
 		0D65CEDB24222C6600E11D0A /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
-		0D6C34042427D92A00FF9FBE /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		0D6C34072427DBB200FF9FBE /* PKCanvasViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCanvasViewRepresentable.swift; sourceTree = "<group>"; };
 		0D8C7F98244C51E3006E434F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		0D8C7F9A244C51F6006E434F /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -262,7 +260,6 @@
 		0D6C34062427DA7C00FF9FBE /* CanvasView */ = {
 			isa = PBXGroup;
 			children = (
-				0D6C34042427D92A00FF9FBE /* CanvasView.swift */,
 				0D6C34072427DBB200FF9FBE /* PKCanvasViewRepresentable.swift */,
 			);
 			path = CanvasView;
@@ -499,7 +496,6 @@
 				0DBD20C62444D9E300E03920 /* Date+Exts.swift in Sources */,
 				0D5AF63E2417F14E0094E276 /* NumberFormatter+Exts.swift in Sources */,
 				0D5AF5BF2417E7290094E276 /* AppDelegate.swift in Sources */,
-				0D6C34052427D92A00FF9FBE /* CanvasView.swift in Sources */,
 				0D5AF63F2417F14E0094E276 /* Double+Exts.swift in Sources */,
 				0D5AF6272417F1270094E276 /* Task.swift in Sources */,
 				0DBD20C22444AFF300E03920 /* TaskInputModelProtocol.swift in Sources */,

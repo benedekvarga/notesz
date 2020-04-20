@@ -28,7 +28,7 @@ struct TaskView: View, RootViewProtocol {
                     .frame(width: 24, height: 24)
                     .padding(.leading, 12)
                 ZStack {
-                    CanvasView()
+                    PKCanvasViewRepresentable(shouldClearData: .constant(0))
                         .overlay(
                             RoundedRectangle(cornerRadius: 6)
                                 .stroke(Color.noteszDarkGray, lineWidth: 1)
