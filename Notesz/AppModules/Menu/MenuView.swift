@@ -17,15 +17,14 @@ struct MenuView: View {
                 Text(data)
             }
             .navigationBarTitle("Notesz")
-            Button(action: {
-                self.showCompare = true
-            }, label: {
+
+            NavigationLink(
+              destination: CompareView()) {
+                Spacer()
                 Text("Compare PKCanvas and SmoothCanvas")
-            })
-            .sheet(isPresented: self.$showCompare) {
-                CompareView()
+                Spacer()
             }
-            .padding(.leading, 24)
+            .padding([.leading, .trailing], 24)
         }
     }
 
