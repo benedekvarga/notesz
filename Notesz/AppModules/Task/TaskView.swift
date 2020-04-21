@@ -12,11 +12,12 @@ struct TaskView: View, RootViewProtocol {
     // MARK: - Properties
 
     @ObservedObject private var viewModel: TaskViewModel
-    @State private var isHighlighted = false
+    @State private var isHighlighted = true
     @State var showDatePicker = false
     @State var notifySelected = true
     @State var selectedDate = Date()
     @State var shouldClearCanvas = 0
+    @State var penToolSelected = true
 
     // MARK: - RootViewProtocol properties
 
@@ -28,14 +29,28 @@ struct TaskView: View, RootViewProtocol {
                 TaskStatusIndicatorView()
                     .frame(width: 24, height: 24)
                     .padding(.leading, 12)
-                ZStack {
-                    PKCanvasViewRepresentable(shouldClearData: $shouldClearCanvas, penColor: .constant(.black))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color.noteszDarkGray, lineWidth: 1)
+                ZStack(alignment: .topTrailing) {
+                    if penToolSelected {
+                        PKCanvasViewRepresentable(shouldClearData: $shouldClearCanvas, penColor: .constant(.black))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(Color.noteszDarkGray, lineWidth: 1)
                         )
-                        .padding([.top, .bottom], 8)
-                        .padding(.trailing, 12)
+                            .padding([.top, .bottom], 8)
+                            .padding(.trailing, 12)
+                    } else {
+                        TextField("Add new task", text: .constant("kuki"))
+                    }
+                    if isHighlighted {
+                        Button(action: {
+                            self.shouldClearCanvas += 1
+                        }, label: {
+                            Image(systemName: "clear")
+                        })
+                            .foregroundColor(.red)
+                            .padding(.top, 16)
+                            .padding(.trailing, 18)
+                    }
                 }
             }
             .onTapGesture {
@@ -44,41 +59,32 @@ struct TaskView: View, RootViewProtocol {
             .frame(height: 70)
 
             if self.$isHighlighted.wrappedValue {
-                HStack(alignment: .top) {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Image(systemName: "bell")
-                            Text(viewModel.alertText)
-                                .font(.subheadline)
-                                .onTapGesture {
-                                    if !self.$showDatePicker.wrappedValue {
-                                        self.$showDatePicker.wrappedValue.toggle()
-                                    }
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "bell")
+                        Text(viewModel.alertText)
+                            .font(.subheadline)
+                            .onTapGesture {
+                                if !self.$showDatePicker.wrappedValue {
+                                    self.$showDatePicker.wrappedValue.toggle()
                                 }
-                        }
-                        HStack {
-                            Image(systemName: "calendar")
-                            Text(viewModel.deadlineText)
-                                .font(.subheadline)
-                                .onTapGesture {
-                                    if !self.$showDatePicker.wrappedValue {
-                                        self.$showDatePicker.wrappedValue.toggle()
-                                    }
-                                }
-                        }
-                        if self.showDatePicker {
-                            DatePicker(selection: $selectedDate, in: Date()..., displayedComponents: .date) {
-                                Text("")
                             }
+                    }
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text(viewModel.deadlineText)
+                            .font(.subheadline)
+                            .onTapGesture {
+                                if !self.$showDatePicker.wrappedValue {
+                                    self.$showDatePicker.wrappedValue.toggle()
+                                }
+                            }
+                    }
+                    if self.showDatePicker {
+                        DatePicker(selection: $selectedDate, in: Date()..., displayedComponents: .date) {
+                            Text("")
                         }
                     }
-                    Spacer()
-                    Button(action: {
-                        self.shouldClearCanvas += 1
-                    }, label: {
-                        Image(systemName: "clear")
-                    })
-                    .foregroundColor(.red)
                 }
                 .padding(.leading, 48)
                 .padding(.trailing, 12)

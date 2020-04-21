@@ -15,6 +15,7 @@ struct TaskListView: View {
         UITableViewCell.appearance().backgroundColor = .clear
         UITableView.appearance().separatorStyle = .none
         UITableView.appearance().tableFooterView = UIView(frame: .zero)
+        UITableViewCell.appearance().selectionStyle = .none
     }
 
     var body: some View {
@@ -22,6 +23,7 @@ struct TaskListView: View {
             Section {
                 ForEach(viewModel.dataSource, content: TaskView.init(viewModel:))
             }
+            .listRowBackground(Color.clear)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
     }
