@@ -19,12 +19,24 @@ struct TaskListView: View {
     }
 
     var body: some View {
-        List {
-            Section {
-                ForEach(viewModel.dataSource, content: TaskView.init(viewModel:))
+        ZStack (alignment: .bottomTrailing) {
+            List {
+                Section {
+                    ForEach(viewModel.dataSource, content: TaskView.init(viewModel:))
+                }
+                .listRowBackground(Color.clear)
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                .padding(.bottom, 20)
             }
-            .listRowBackground(Color.clear)
-            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            Image(systemName: "plus.circle.fill")
+                .resizable()
+                .frame(width: 44, height: 44)
+                .foregroundColor(Color.blue)
+                .padding(12)
+                .padding(.trailing, 24)
+                .onTapGesture {
+                    self.viewModel.newTask()
+                }
         }
     }
 }

@@ -16,3 +16,13 @@ struct TaskInputModel: TaskInputModelProtocol {
     var alertDate: Date?
     var deadlineData: Date?
 }
+
+extension TaskInputModel {
+    init() {
+        self.writtenData = nil
+        self.typedData = nil
+        self.tags = []
+        self.alertDate = nil
+        self.deadlineData = nil
+    }
+}

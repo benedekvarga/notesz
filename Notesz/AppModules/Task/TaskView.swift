@@ -12,7 +12,7 @@ struct TaskView: View, RootViewProtocol {
     // MARK: - Properties
 
     @ObservedObject private var viewModel: TaskViewModel
-    @State private var isHighlighted = true
+    @State private var isHighlighted = false
     @State var showDatePicker = false
     @State var notifySelected = true
     @State var selectedDate = Date()
@@ -30,26 +30,24 @@ struct TaskView: View, RootViewProtocol {
                     .frame(width: 24, height: 24)
                     .padding(.leading, 12)
                 ZStack(alignment: .topTrailing) {
+                    RoundedRectangle(cornerRadius: 6)
+                        .stroke(Color.noteszDarkGray, lineWidth: 1)
+                        .background(Color.clear)
+                        .padding(.trailing, 12)
                     if penToolSelected {
                         PKCanvasViewRepresentable(shouldClearData: $shouldClearCanvas, penColor: .constant(.black))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(Color.noteszDarkGray, lineWidth: 1)
-                        )
-                            .padding([.top, .bottom], 8)
-                            .padding(.trailing, 12)
+                            .padding([.top, .bottom], 2)
+                            .padding(.leading, 2)
+                            .padding(.trailing, 14)
                     } else {
-                        TextField("Add new task", text: .constant("kuki"))
-                    }
-                    if isHighlighted {
-                        Button(action: {
-                            self.shouldClearCanvas += 1
-                        }, label: {
-                            Image(systemName: "clear")
-                        })
-                            .foregroundColor(.red)
-                            .padding(.top, 16)
-                            .padding(.trailing, 18)
+                        VStack(alignment: .center) {
+                            Spacer()
+                            TextField("Add new task", text: $viewModel.typedData)
+                                .background(Color.clear)
+                            Spacer()
+                        }
+                        .padding()
+                        .padding(.trailing, 10)
                     }
                 }
             }
@@ -59,30 +57,56 @@ struct TaskView: View, RootViewProtocol {
             .frame(height: 70)
 
             if self.$isHighlighted.wrappedValue {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Image(systemName: "bell")
-                        Text(viewModel.alertText)
-                            .font(.subheadline)
-                            .onTapGesture {
-                                if !self.$showDatePicker.wrappedValue {
-                                    self.$showDatePicker.wrappedValue.toggle()
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Image(systemName: "bell")
+                            Text(viewModel.alertText)
+                                .font(.subheadline)
+                                .onTapGesture {
+                                    if !self.$showDatePicker.wrappedValue {
+                                        self.$showDatePicker.wrappedValue.toggle()
+                                    }
                                 }
-                            }
-                    }
-                    HStack {
-                        Image(systemName: "calendar")
-                        Text(viewModel.deadlineText)
-                            .font(.subheadline)
-                            .onTapGesture {
-                                if !self.$showDatePicker.wrappedValue {
-                                    self.$showDatePicker.wrappedValue.toggle()
+                        }
+                        HStack {
+                            Image(systemName: "calendar")
+                            Text(viewModel.deadlineText)
+                                .font(.subheadline)
+                                .onTapGesture {
+                                    if !self.$showDatePicker.wrappedValue {
+                                        self.$showDatePicker.wrappedValue.toggle()
+                                    }
                                 }
+                        }
+                        if self.showDatePicker {
+                            DatePicker(selection: $selectedDate, in: Date()..., displayedComponents: .date) {
+                                Text("")
                             }
+                        }
                     }
-                    if self.showDatePicker {
-                        DatePicker(selection: $selectedDate, in: Date()..., displayedComponents: .date) {
-                            Text("")
+                    Spacer()
+                    HStack(alignment: .center) {
+                        Image(systemName: penToolSelected ? "keyboard" : "pencil.and.outline")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 28, height: 20)
+                            .padding(4)
+                            .foregroundColor(.black)
+                            .onTapGesture {
+                                self.penToolSelected.toggle()
+                            }
+
+                        if isHighlighted {
+                            Image(systemName: "clear")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(.red)
+                                .frame(width: 28, height: 20)
+                                .padding(4)
+                                .onTapGesture {
+                                    self.shouldClearCanvas += 1
+                                }
                         }
                     }
                 }

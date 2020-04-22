@@ -58,4 +58,12 @@ class TaskListViewModel: ObservableObject, Identifiable {
             )
         ]
     }
+
+    // MARK: - Public functions
+
+    public func newTask() {
+        let inputModel = TaskInputModel()
+        let viewModel = TaskViewModel(inputModel: inputModel)
+        dataSource.append(viewModel)
+    }
 }
