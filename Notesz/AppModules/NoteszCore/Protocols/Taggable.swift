@@ -9,5 +9,5 @@
 import Foundation
 
 protocol Taggable {
-    var tags: [Tag]? { get }
+    var tags: [Tag] { get }
 }

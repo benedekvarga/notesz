@@ -11,7 +11,7 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             MenuView()
-            TaskListView(viewModel: TaskListViewModel())
+            TaskListView(viewModel: TaskListViewModel(name: "", tasks: []))
         }
     }
 }

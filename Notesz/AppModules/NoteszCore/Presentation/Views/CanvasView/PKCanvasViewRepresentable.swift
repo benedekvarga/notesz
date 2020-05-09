@@ -13,6 +13,7 @@ struct PKCanvasViewRepresentable: UIViewRepresentable {
 
     @Binding var shouldClearData: Int
     @Binding var penColor: UIColor
+    @State var data: Data?
 
     // MARK: - UIViewRepresentable functions
 
@@ -20,6 +21,7 @@ struct PKCanvasViewRepresentable: UIViewRepresentable {
         let canvasView = PKCanvasView()
         canvasView.layer.masksToBounds = false
         canvasView.allowsFingerDrawing = false
+        canvasView.delegate = context.coordinator
         return canvasView
     }
 
@@ -29,5 +31,22 @@ struct PKCanvasViewRepresentable: UIViewRepresentable {
         }
 
         uiView.tool = PKInkingTool(.pen, color: penColor, width: 2)
+    }
+
+    func makeCoordinator() -> PKCanvasViewRepresentable.Coordinator {
+        Coordinator(self)
+    }
+
+    final class Coordinator: NSObject, PKCanvasViewDelegate {
+        private let canvas: PKCanvasViewRepresentable
+
+        init(_ canvas: PKCanvasViewRepresentable) {
+            self.canvas = canvas
+        }
+
+        func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+            print("drawing changed")
+            canvas.data = canvasView.drawing.dataRepresentation()
+        }
     }
 }

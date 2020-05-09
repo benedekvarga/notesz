@@ -9,20 +9,6 @@
 import Foundation
 import UIKit
 
-struct Tag {
+struct Tag: Hashable, Equatable {
     public var name: String
-    public var redComponent: Int
-    public var greenComponent: Int
-    public var blueComponent: Int
-}
-
-extension Tag {
-    public var color: UIColor {
-        return UIColor(
-            red: CGFloat(redComponent) / 255.0,
-            green: CGFloat(greenComponent) / 255.0,
-            blue: CGFloat(blueComponent) / 255.0,
-            alpha: 1.0
-        )
-    }
 }

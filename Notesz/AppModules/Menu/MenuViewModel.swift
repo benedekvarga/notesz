@@ -9,9 +9,9 @@ import Combine
 import Foundation
 
 class MenuViewModel: ObservableObject, Identifiable {
-    @Published public var data: [String] = []
+    @Published public var data: [Group] = []
 
     init() {
-        self.data = ["Project 1", "Project 2", "Project 3"]
+        self.data = MockDataBase.shared.database
     }
 }

@@ -19,7 +19,7 @@ struct TaskListView: View {
     }
 
     var body: some View {
-        ZStack (alignment: .bottomTrailing) {
+        ZStack(alignment: .bottomTrailing) {
             List {
                 Section {
                     ForEach(viewModel.dataSource, content: TaskView.init(viewModel:))
@@ -28,6 +28,8 @@ struct TaskListView: View {
                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 .padding(.bottom, 20)
             }
+            .navigationBarTitle(viewModel.name)
+
             Image(systemName: "plus.circle.fill")
                 .resizable()
                 .frame(width: 44, height: 44)
@@ -43,6 +45,6 @@ struct TaskListView: View {
 
 struct TaskListViewPreviews: PreviewProvider {
     static var previews: some View {
-        TaskListView(viewModel: TaskListViewModel())
+        TaskListView(viewModel: TaskListViewModel(name: "Teszt projekt", tasks: []))
     }
 }

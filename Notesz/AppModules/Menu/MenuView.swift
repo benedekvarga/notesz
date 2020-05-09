@@ -13,13 +13,22 @@ struct MenuView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            List(viewModel.data, id: \.self) { data in
-                Text(data)
+            List {
+                ForEach(viewModel.data, id: \.self) { group in
+                    Section(header: GroupSectionHeaderView(title: .constant(group.name)).background(Color.clear)) {
+                        ForEach(group.projects, id: \.self) { project in
+                            NavigationLink(destination: TaskListView(viewModel: TaskListViewModel(name: project.name, tasks: project.tasks))) {
+                                Text(project.name)
+                            }
+                        }
+                    }
+                    .background(Color.clear)
+                }
+                .background(Color.clear)
             }
             .navigationBarTitle("Notesz")
 
-            NavigationLink(
-              destination: CompareView()) {
+            NavigationLink(destination: CompareView()) {
                 Spacer()
                 Text("Compare PKCanvas and SmoothCanvas")
                 Spacer()

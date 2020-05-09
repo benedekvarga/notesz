@@ -11,52 +11,21 @@ class TaskListViewModel: ObservableObject, Identifiable {
     // MARK: - Properties
 
     @Published var dataSource: [TaskViewModel]
+    @Published var name: String
 
     // MARK: - Initialization
 
-    init() {
-        self.dataSource = [
-            TaskViewModel(inputModel:
-                TaskInputModel(
-                    writtenData: nil,
-                    typedData: nil,
-                    tags: [],
-                    alertDate: nil,
-                    deadlineData: nil)
-            ),
-            TaskViewModel(inputModel:
-                TaskInputModel(
-                    writtenData: nil,
-                    typedData: nil,
-                    tags: [],
-                    alertDate: nil,
-                    deadlineData: nil)
-            ),
-            TaskViewModel(inputModel:
-                TaskInputModel(
-                    writtenData: nil,
-                    typedData: nil,
-                    tags: [],
-                    alertDate: nil,
-                    deadlineData: nil)
-            ),
-            TaskViewModel(inputModel:
-                TaskInputModel(
-                    writtenData: nil,
-                    typedData: nil,
-                    tags: [],
-                    alertDate: nil,
-                    deadlineData: nil)
-            ),
-            TaskViewModel(inputModel:
-                TaskInputModel(
-                    writtenData: nil,
-                    typedData: nil,
-                    tags: [],
-                    alertDate: nil,
-                    deadlineData: nil)
+    init(name: String, tasks: [Task]) {
+        self.name = name
+        self.dataSource = tasks.map { TaskViewModel(
+            inputModel: TaskInputModel(
+                writtenData: $0.writtenData,
+                typedData: $0.typedData,
+                tags: $0.tags,
+                alertDate: $0.alertDate,
+                deadlineData: $0.alertDate)
             )
-        ]
+        }
     }
 
     // MARK: - Public functions

@@ -8,32 +8,36 @@
 
 import Foundation
 
-struct Group: Taggable, Ordered {
+struct Group: Ordered {
     public var name: String
     public var orderId: Int
     public var creationDate: Date
-    public var projects: [Project]?
-    public var tasks: [Task]?
-    public var tags: [Tag]?
-}
+    public var projects: [Project]
 
-extension Group {
-    public init(name: String, orderId: Int, creationDate: Date = Date()) {
+    public init(name: String, orderId: Int, creationDate: Date = Date(), projects: [Project]) {
         self.name = name
         self.orderId = orderId
         self.creationDate = creationDate
+        self.projects = projects
     }
 }
 
 extension Group {
     public var duration: Int {
         var count = 0
-        tasks?.forEach {
-            count += ($0.duration ?? 0)
-        }
-        projects?.forEach {
+        projects.forEach {
             count += ($0.duration)
         }
         return count
+    }
+}
+
+extension Group: Hashable, Equatable {
+    static func == (lhs: Group, rhs: Group) -> Bool {
+        return
+            lhs.name == rhs.name &&
+            lhs.orderId == rhs.orderId &&
+            lhs.creationDate == rhs.creationDate &&
+            lhs.projects == rhs.projects
     }
 }

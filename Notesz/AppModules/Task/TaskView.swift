@@ -17,7 +17,7 @@ struct TaskView: View, RootViewProtocol {
     @State var notifySelected = true
     @State var selectedDate = Date()
     @State var shouldClearCanvas = 0
-    @State var penToolSelected = true
+    @State var penToolSelected = false
 
     // MARK: - RootViewProtocol properties
 
@@ -33,12 +33,14 @@ struct TaskView: View, RootViewProtocol {
                     RoundedRectangle(cornerRadius: 6)
                         .stroke(Color.noteszDarkGray, lineWidth: 1)
                         .background(Color.clear)
-                        .padding(.trailing, 12)
                     if penToolSelected {
-                        PKCanvasViewRepresentable(shouldClearData: $shouldClearCanvas, penColor: .constant(.black))
-                            .padding([.top, .bottom], 2)
-                            .padding(.leading, 2)
-                            .padding(.trailing, 14)
+                        PKCanvasViewRepresentable(
+                            shouldClearData: $shouldClearCanvas,
+                            penColor: .constant(.black)
+                        )
+                        .padding([.top, .bottom], 2)
+                        .padding(.leading, 2)
+                        .padding(.trailing, 14)
                     } else {
                         VStack(alignment: .center) {
                             Spacer()
@@ -47,12 +49,15 @@ struct TaskView: View, RootViewProtocol {
                             Spacer()
                         }
                         .padding()
-                        .padding(.trailing, 10)
                     }
                 }
-            }
-            .onTapGesture {
-                self.$isHighlighted.wrappedValue.toggle()
+                Image(systemName: "ellipsis.circle")
+                .resizable()
+                    .frame(width: 20, height: 20, alignment: .center)
+                    .padding(.trailing, 8)
+                    .onTapGesture {
+                        self.$isHighlighted.wrappedValue.toggle()
+                    }
             }
             .frame(height: 70)
 
@@ -121,6 +126,7 @@ struct TaskView: View, RootViewProtocol {
 
     init(viewModel: TaskViewModel) {
         self.viewModel = viewModel
+        self.penToolSelected = viewModel.typedData.isEmpty
     }
 }
 

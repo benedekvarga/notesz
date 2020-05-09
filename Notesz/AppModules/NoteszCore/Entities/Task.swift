@@ -17,16 +17,18 @@ struct Task: Taggable, Ordered {
     public var duration: Int?
     public var alertDate: Date?
     public var deadline: Date?
-    public var tags: [Tag]?
+    public var tags: [Tag]
 }
 
 // MARK: - Inits
 
 extension Task {
-    public init(completed: Bool = false, orderId: Int, creationDate: Date = Date()) {
+    public init(typedData: String, completed: Bool = false, orderId: Int, creationDate: Date = Date()) {
+        self.typedData = typedData
         self.completed = completed
         self.orderId = orderId
         self.creationDate = creationDate
+        self.tags = []
     }
 }
 
@@ -59,5 +61,20 @@ extension Task {
             return (Int(round(remaining / 2592000.0)), .month)
         }
         return (Int(round(remaining / 31536000.0)), .year)
+    }
+}
+
+extension Task: Hashable, Equatable {
+    static func == (lhs: Task, rhs: Task) -> Bool {
+        return
+            lhs.writtenData == rhs.writtenData &&
+            lhs.typedData == rhs.typedData &&
+            lhs.completed == rhs.completed &&
+            lhs.creationDate == rhs.creationDate &&
+            lhs.orderId == rhs.orderId &&
+            lhs.duration == rhs.duration &&
+            lhs.alertDate == rhs.alertDate &&
+            lhs.deadline == rhs.deadline &&
+            lhs.tags == rhs.tags
     }
 }

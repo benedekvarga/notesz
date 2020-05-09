@@ -50,6 +50,8 @@
 		0DBD20C42444B00800E03920 /* TaskInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD20C32444B00800E03920 /* TaskInputModel.swift */; };
 		0DBD20C62444D9E300E03920 /* Date+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD20C52444D9E300E03920 /* Date+Exts.swift */; };
 		0DD984C0244DEF8F00AA6F55 /* UIColor+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD984BF244DEF8F00AA6F55 /* UIColor+Exts.swift */; };
+		B57F9685246690730036A7CB /* MockDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57F9684246690730036A7CB /* MockDataBase.swift */; };
+		B5EC59C92466DD9200AD0DA7 /* GroupSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EC59C82466DD9200AD0DA7 /* GroupSectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +99,8 @@
 		0DBD20C32444B00800E03920 /* TaskInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInputModel.swift; sourceTree = "<group>"; };
 		0DBD20C52444D9E300E03920 /* Date+Exts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Exts.swift"; sourceTree = "<group>"; };
 		0DD984BF244DEF8F00AA6F55 /* UIColor+Exts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Exts.swift"; sourceTree = "<group>"; };
+		B57F9684246690730036A7CB /* MockDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataBase.swift; sourceTree = "<group>"; };
+		B5EC59C82466DD9200AD0DA7 /* GroupSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 		0D5AF5F52417E94C0094E276 /* AppModules */ = {
 			isa = PBXGroup;
 			children = (
+				B57F9683246690610036A7CB /* Database */,
 				0D8C7FA1244C8918006E434F /* Compare */,
 				0D8C7F9C244C87F8006E434F /* Main */,
 				0D8C7F97244C51CF006E434F /* Menu */,
@@ -236,8 +241,8 @@
 			children = (
 				0D5AF6232417F1270094E276 /* Group.swift */,
 				0D5AF6202417F1270094E276 /* Project.swift */,
-				0D5AF6212417F1270094E276 /* Tag.swift */,
 				0D5AF6222417F1270094E276 /* Task.swift */,
+				0D5AF6212417F1270094E276 /* Tag.swift */,
 				0D5AF6242417F1270094E276 /* TimeIntervals.swift */,
 			);
 			path = Entities;
@@ -271,6 +276,7 @@
 		0D8C7F97244C51CF006E434F /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				B5EC59C72466DD7100AD0DA7 /* Views */,
 				0D8C7F98244C51E3006E434F /* MenuView.swift */,
 				0D8C7F9A244C51F6006E434F /* MenuViewModel.swift */,
 			);
@@ -315,7 +321,6 @@
 		0D93AC31242A13D9007057E0 /* Task */ = {
 			isa = PBXGroup;
 			children = (
-				0DBD20C72444DDF200E03920 /* Views */,
 				0D93AC36242A1429007057E0 /* TaskView.swift */,
 				0D93AC32242A1406007057E0 /* TaskViewModel.swift */,
 				0DBD20C12444AFF300E03920 /* TaskInputModelProtocol.swift */,
@@ -378,9 +383,18 @@
 			path = Architecture;
 			sourceTree = "<group>";
 		};
-		0DBD20C72444DDF200E03920 /* Views */ = {
+		B57F9683246690610036A7CB /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				B57F9684246690730036A7CB /* MockDataBase.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		B5EC59C72466DD7100AD0DA7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B5EC59C82466DD9200AD0DA7 /* GroupSectionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -488,6 +502,7 @@
 				0D5AF6262417F1270094E276 /* Tag.swift in Sources */,
 				0D5AF6372417F14E0094E276 /* Logger.swift in Sources */,
 				0D5AF63D2417F14E0094E276 /* System.swift in Sources */,
+				B5EC59C92466DD9200AD0DA7 /* GroupSectionHeaderView.swift in Sources */,
 				0D8C7FA3244C892C006E434F /* CompareViewModel.swift in Sources */,
 				0DBD20C42444B00800E03920 /* TaskInputModel.swift in Sources */,
 				0D5AF63A2417F14E0094E276 /* CGFloat+Exts.swift in Sources */,
@@ -503,6 +518,7 @@
 				0D5AF63F2417F14E0094E276 /* Double+Exts.swift in Sources */,
 				0D5AF6272417F1270094E276 /* Task.swift in Sources */,
 				0DBD20C22444AFF300E03920 /* TaskInputModelProtocol.swift in Sources */,
+				B57F9685246690730036A7CB /* MockDataBase.swift in Sources */,
 				0D6C34082427DBB200FF9FBE /* PKCanvasViewRepresentable.swift in Sources */,
 				0D93AC22242A120D007057E0 /* TaskListViewModel.swift in Sources */,
 				0D5AF5C12417E7290094E276 /* SceneDelegate.swift in Sources */,
