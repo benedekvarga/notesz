@@ -25,4 +25,12 @@ extension Color {
     public static var noteszBlue: Color {
         return Color(hex: "3F7CAC")
     }
+
+    public static var noteszDarkBlue: Color {
+        return Color(hex: "193661")
+    }
+
+    public static var noteszYellow: Color {
+        return Color(hex: "FFD166")
+    }
 }

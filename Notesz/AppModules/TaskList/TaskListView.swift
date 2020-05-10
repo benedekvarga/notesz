@@ -22,7 +22,7 @@ struct TaskListView: View {
         ZStack(alignment: .bottomTrailing) {
             List {
                 Section {
-                    ForEach(viewModel.dataSource, content: TaskView.init(viewModel:))
+                    ForEach(viewModel.dataSource, content: TaskCellView.init(viewModel:))
                 }
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))

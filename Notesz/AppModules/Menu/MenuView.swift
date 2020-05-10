@@ -18,20 +18,30 @@ struct MenuView: View {
                     Section(header: GroupSectionHeaderView(title: .constant(group.name)).background(Color.clear)) {
                         ForEach(group.projects, id: \.self) { project in
                             NavigationLink(destination: TaskListView(viewModel: TaskListViewModel(name: project.name, tasks: project.tasks))) {
-                                Text(project.name)
+                                ProjectCellView(title: .constant(project.name), numberOfCompletedTasks: .constant(project.completed))
                             }
                         }
                     }
-                    .background(Color.clear)
                 }
-                .background(Color.clear)
             }
             .navigationBarTitle("Notesz")
 
             NavigationLink(destination: CompareView()) {
-                Spacer()
-                Text("Compare PKCanvas and SmoothCanvas")
-                Spacer()
+                ZStack {
+                    Rectangle()
+                        .background(Color.noteszBlue)
+                        .padding([.leading, .trailing, .bottom], -50)
+                        .frame(height: 60)
+                    HStack {
+                        Spacer()
+                        Text("PKCanvas és SmoothCanvas összehasonlítása")
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color.white)
+                            .multilineTextAlignment(.center)
+                            .padding(.top, 16)
+                        Spacer()
+                    }
+                }
             }
             .padding([.leading, .trailing], 24)
         }

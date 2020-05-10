@@ -10,29 +10,24 @@ import Combine
 class TaskListViewModel: ObservableObject, Identifiable {
     // MARK: - Properties
 
-    @Published var dataSource: [TaskViewModel]
+    @Published var dataSource: [TaskCellViewModel]
     @Published var name: String
+
+    private let tasks: [Task]
 
     // MARK: - Initialization
 
     init(name: String, tasks: [Task]) {
         self.name = name
-        self.dataSource = tasks.map { TaskViewModel(
-            inputModel: TaskInputModel(
-                writtenData: $0.writtenData,
-                typedData: $0.typedData,
-                tags: $0.tags,
-                alertDate: $0.alertDate,
-                deadlineData: $0.alertDate)
-            )
-        }
+        self.dataSource = tasks.map { TaskCellViewModel(task: $0) }
+        self.tasks = tasks
     }
 
     // MARK: - Public functions
 
     public func newTask() {
-        let inputModel = TaskInputModel()
-        let viewModel = TaskViewModel(inputModel: inputModel)
+        let task = Task(typedData: "", orderId: dataSource.count)
+        let viewModel = TaskCellViewModel(task: task)
         dataSource.append(viewModel)
     }
 }

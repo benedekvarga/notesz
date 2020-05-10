@@ -11,7 +11,9 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             MenuView()
-            TaskListView(viewModel: TaskListViewModel(name: "", tasks: []))
+            Text("Válassz egy projektet!")
+                .font(.system(size: 42.0))
+                .fontWeight(.ultraLight)
         }
     }
 }

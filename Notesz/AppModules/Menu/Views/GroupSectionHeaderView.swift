@@ -14,15 +14,18 @@ struct GroupSectionHeaderView: View {
         VStack {
             HStack {
                 Text(title)
-                    .font(.headline)
-                    .foregroundColor(.white)
+                    .font(.system(size: 22.0))
+                    .fontWeight(.ultraLight)
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
                     .frame(maxHeight: .infinity)
+                    .padding(.bottom, -10)
                 Spacer()
             }
         }
-        .frame(minHeight: 40)
+        .frame(minHeight: 50)
         .padding(0)
-        .background(FillAll(color: Color.noteszBlue))
+        .background(FillAll(color: Color.white))
     }
 }
 
@@ -39,6 +42,6 @@ struct FillAll: View {
 struct GroupSectionHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         GroupSectionHeaderView(title: .constant("Munka"))
-        .previewLayout(.fixed(width: 300, height: 40))
+        .previewLayout(.fixed(width: 300, height: 50))
     }
 }

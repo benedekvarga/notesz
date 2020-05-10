@@ -49,7 +49,7 @@ class MockDataBase {
                         tasks: [
                             Task(typedData: "Drag and drop reorder", orderId: 0),
                             Task(typedData: "Kurzortámogatás", orderId: 1),
-                            Task(typedData: "TaskView UI liftup", orderId: 2),
+                            Task(typedData: "TaskCellView UI liftup", orderId: 2),
                             Task(typedData: "Task törlés", orderId: 3),
                             Task(typedData: "Project törlés", orderId: 4),
                             Task(typedData: "Group törlés", orderId: 5),
