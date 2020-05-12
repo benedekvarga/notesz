@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SmoothCanvasSPM",
+        "repositoryURL": "https://github.com/benedekvarga/SmoothCanvasSPM",
+        "state": {
+          "branch": null,
+          "revision": "4cca044cf43926f79d6f02a8be6b66c2c4034231",
+          "version": "1.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

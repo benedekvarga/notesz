@@ -41,23 +41,43 @@ struct TaskDetailsView: View {
                 .padding([.leading, .trailing], 12)
 
                 HStack {
+                    ZStack {
+                        Image(systemName: viewModel.isCompleted ? "checkmark.circle.fill" : "checkmark.circle")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .font(Font.title.weight(.light))
+                        .foregroundColor(viewModel.isCompleted ? Color.white : Color.black)
+                    }
+                    .frame(width: 50, height: 50)
+                    .background(viewModel.isCompleted ? Color.green : Color.clear)
+                    .cornerRadius(6)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(viewModel.isCompleted ? Color.green : Color.black, lineWidth: 1)
+                    )
+                    .onTapGesture {
+                        self.viewModel.isCompleted.toggle()
+                    }
+
                     HStack(alignment: .center) {
                         Text("Beviteli mód:")
                             .font(.system(size: 12.0))
                             .fontWeight(.light)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                         Image(systemName: viewModel.penToolSelected ? "square.and.pencil" : "keyboard")
                             .resizable()
-                            .font(Font.title.weight(.bold))
+                            .font(Font.title.weight(.light))
                             .aspectRatio(contentMode: .fit)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .frame(width: 24, height: 20, alignment: .center)
                     }
                     .frame(height: 34)
                     .padding([.top, .bottom], 8)
                     .padding([.leading, .trailing], 14)
-                    .background(Color.noteszBlue)
-                    .cornerRadius(6)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(Color.black, lineWidth: 1)
+                    )
                     .onTapGesture {
                         self.viewModel.penToolSelected.toggle()
                     }

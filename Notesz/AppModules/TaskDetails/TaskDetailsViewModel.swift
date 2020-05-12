@@ -11,7 +11,7 @@ import Foundation
 class TaskDetailsViewModel: RootViewModel, ObservableObject {
     @Published public var writtenData: Data?
     @Published public var typedData: String
-    @Published public var isCompleted = false
+    @Published public var isCompleted: Bool
     @Published public var penToolSelected: Bool
     @Published public var lineWidth: Double = 2
 
@@ -22,6 +22,7 @@ class TaskDetailsViewModel: RootViewModel, ObservableObject {
         self.writtenData = task.writtenData
         self.typedData = task.typedData ?? ""
         self.penToolSelected = task.typedData == nil
+        self.isCompleted = task.completed
         self.task = task
 
         super.init()
