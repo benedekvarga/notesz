@@ -11,7 +11,7 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             MenuView()
-            Text("Válassz egy projektet!")
+            Text("Válassz egy projektet a részletekhez!")
                 .font(.system(size: 42.0))
                 .fontWeight(.ultraLight)
         }

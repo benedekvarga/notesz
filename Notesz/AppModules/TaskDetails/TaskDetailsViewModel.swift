@@ -13,6 +13,7 @@ class TaskDetailsViewModel: RootViewModel, ObservableObject {
     @Published public var typedData: String
     @Published public var isCompleted = false
     @Published public var penToolSelected: Bool
+    @Published public var lineWidth: Double = 2
 
     private var task: Task
     private var subscriptions = Set<AnyCancellable>()
@@ -42,6 +43,12 @@ class TaskDetailsViewModel: RootViewModel, ObservableObject {
         $isCompleted
             .sink(receiveValue: { [weak self] data in
                 self?.task.completed = data
+            })
+            .store(in: &subscriptions)
+
+        $lineWidth
+            .sink(receiveValue: { [weak self] data in
+                print(data)
             })
             .store(in: &subscriptions)
     }

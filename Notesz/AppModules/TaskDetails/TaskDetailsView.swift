@@ -52,14 +52,15 @@ struct TaskDetailsView: View {
                             .aspectRatio(contentMode: .fit)
                             .foregroundColor(.white)
                             .frame(width: 24, height: 20, alignment: .center)
-                            .onTapGesture {
-                                self.viewModel.penToolSelected.toggle()
-                            }
                     }
+                    .frame(height: 34)
                     .padding([.top, .bottom], 8)
                     .padding([.leading, .trailing], 14)
                     .background(Color.noteszBlue)
                     .cornerRadius(6)
+                    .onTapGesture {
+                        self.viewModel.penToolSelected.toggle()
+                    }
 
                     HStack(alignment: .center) {
                         Text("Szín:")
@@ -73,7 +74,7 @@ struct TaskDetailsView: View {
                             .foregroundColor(.black)
                             .frame(width: 18, height: 18, alignment: .center)
                             .onTapGesture {
-
+                                print("black")
                             }
                         Image(systemName: "circle.fill")
                             .resizable()
@@ -82,7 +83,7 @@ struct TaskDetailsView: View {
                             .foregroundColor(.blue)
                             .frame(width: 18, height: 18, alignment: .center)
                             .onTapGesture {
-
+                                print("blue")
                             }
                         Image(systemName: "circle.fill")
                             .resizable()
@@ -91,7 +92,7 @@ struct TaskDetailsView: View {
                             .foregroundColor(.green)
                             .frame(width: 18, height: 18, alignment: .center)
                             .onTapGesture {
-
+                                print("green")
                             }
                         Image(systemName: "circle.fill")
                             .resizable()
@@ -100,8 +101,31 @@ struct TaskDetailsView: View {
                             .foregroundColor(.red)
                             .frame(width: 18, height: 18, alignment: .center)
                             .onTapGesture {
-
+                                print("red")
                             }
+                    }
+                    .frame(height: 34)
+                    .padding([.top, .bottom], 8)
+                    .padding([.leading, .trailing], 14)
+                    .background(Color.clear)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(Color.black, lineWidth: 1)
+                    )
+
+                    HStack(alignment: .center) {
+                        Text("Vonalvastagság:")
+                            .font(.system(size: 12.0))
+                            .fontWeight(.light)
+                            .foregroundColor(.black)
+                        ZStack {
+                            Circle()
+                                .frame(width: CGFloat(viewModel.lineWidth), height: CGFloat(viewModel.lineWidth))
+                        }
+                        .frame(width: 20, height: 30)
+                        Slider(value: $viewModel.lineWidth, in: 2...16, step: 0.1)
+                            .accentColor(Color.noteszBlue)
+                            .frame(height: 34)
                     }
                     .padding([.top, .bottom], 8)
                     .padding([.leading, .trailing], 14)
@@ -110,7 +134,6 @@ struct TaskDetailsView: View {
                         RoundedRectangle(cornerRadius: 6)
                             .stroke(Color.black, lineWidth: 1)
                     )
-                    Spacer()
                 }
                 .padding([.leading, .trailing], 12)
                 .padding(.top, 10)
