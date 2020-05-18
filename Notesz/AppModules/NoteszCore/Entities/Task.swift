@@ -15,14 +15,9 @@ struct Task: Taggable, Ordered {
     public var creationDate: Date
     public var orderId: Int
     public var duration: Int?
-    public var alertDate: Date?
     public var deadline: Date?
     public var tags: [Tag]
-}
 
-// MARK: - Inits
-
-extension Task {
     public init(typedData: String, completed: Bool = false, orderId: Int, creationDate: Date = Date()) {
         self.typedData = typedData
         self.completed = completed
@@ -73,7 +68,6 @@ extension Task: Hashable, Equatable {
             lhs.creationDate == rhs.creationDate &&
             lhs.orderId == rhs.orderId &&
             lhs.duration == rhs.duration &&
-            lhs.alertDate == rhs.alertDate &&
             lhs.deadline == rhs.deadline &&
             lhs.tags == rhs.tags
     }

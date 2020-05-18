@@ -48,15 +48,17 @@ struct TaskCellView: View, RootViewProtocol {
                     }
                 }
                 VStack {
-                    Button(action: { self.viewModel.showDetails.toggle() }) {
-                        Image(systemName: "ellipsis.circle")
-                            .resizable()
-                            .frame(width: 20, height: 20, alignment: .center)
-                            .padding(.trailing, 8)
-                            .padding(.top, 8)
-                    }.sheet(isPresented: $viewModel.showDetails) {
-                        TaskDetailsView(viewModel: TaskDetailsViewModel(task: self.viewModel.task))
-                    }
+                    Image(systemName: "ellipsis.circle")
+                        .resizable()
+                        .frame(width: 20, height: 20, alignment: .center)
+                        .padding(.trailing, 8)
+                        .padding(.top, 8)
+                        .onTapGesture {
+                            self.viewModel.showDetails.toggle()
+                        }
+                        .sheet(isPresented: $viewModel.showDetails) {
+                            TaskDetailsView(viewModel: TaskDetailsViewModel(task: self.viewModel.task))
+                        }
                     Spacer()
                     Image(systemName: viewModel.penToolSelected ? "square.and.pencil" : "keyboard")
                         .resizable()
@@ -70,6 +72,32 @@ struct TaskCellView: View, RootViewProtocol {
                 }
             }
             .frame(height: 70)
+            .contextMenu {
+                Button(action: {
+                    // change country setting
+                }) {
+                    Text("Kész")
+                    Image(systemName: "checkmark.circle")
+                        .resizable()
+                        .frame(width: 14, height: 14)
+                }
+                Button(action: {
+                    // change country setting
+                }) {
+                    Text("Részletek")
+                    Image(systemName: "ellipsis.circle")
+                        .resizable()
+                        .frame(width: 14, height: 14)
+                }
+                Button(action: {
+                    // enable geolocation
+                }) {
+                    Text("Törlés")
+                    Image(systemName: "trash")
+                        .resizable()
+                        .frame(width: 14, height: 14)
+                }
+            }
         }
         .padding(.bottom, 0)
     }

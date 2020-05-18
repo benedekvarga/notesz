@@ -20,9 +20,7 @@ struct Group: Ordered {
         self.creationDate = creationDate
         self.projects = projects
     }
-}
 
-extension Group {
     public var duration: Int {
         var count = 0
         projects.forEach {
@@ -30,6 +28,10 @@ extension Group {
         }
         return count
     }
+}
+
+extension Group {
+
 }
 
 extension Group: Hashable, Equatable {

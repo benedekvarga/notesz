@@ -10,10 +10,62 @@ import SwiftUI
 struct TaskDetailsView: View {
     @ObservedObject private var viewModel: TaskDetailsViewModel
     @State var shouldClearCanvas = 0
+    @State private var selectedDate = Date()
+    @State private var showDatePicker = false
+
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy. MM. dd."
+        return formatter
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
+                    HStack(alignment: .center) {
+                        Text("Csoport:")
+                            .font(.system(size: 12.0))
+                            .fontWeight(.light)
+                            .foregroundColor(.black)
+                            .padding(.leading)
+                        Text("Személyes")
+                            .font(.system(size: 12.0))
+                            .fontWeight(.semibold)
+                            .foregroundColor(.black)
+                            .padding(.trailing)
+                    }
+                    .frame(height: 50)
+                    .background(viewModel.isCompleted ? Color.green : Color.clear)
+                    .cornerRadius(6)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(viewModel.isCompleted ? Color.green : Color.black, lineWidth: 1)
+                    )
+
+                    HStack(alignment: .center) {
+                        Text("Projekt:")
+                            .font(.system(size: 12.0))
+                            .fontWeight(.light)
+                            .foregroundColor(.black)
+                            .padding(.leading)
+                        Text("Háztartás")
+                            .font(.system(size: 12.0))
+                            .fontWeight(.semibold)
+                            .foregroundColor(.black)
+                            .padding(.trailing)
+                    }
+                    .frame(height: 50)
+                    .background(viewModel.isCompleted ? Color.green : Color.clear)
+                    .cornerRadius(6)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(viewModel.isCompleted ? Color.green : Color.black, lineWidth: 1)
+                    )
+                }
+                .padding(.trailing, 12)
+                .padding(.bottom, 8)
                 ZStack(alignment: .topTrailing) {
                     RoundedRectangle(cornerRadius: 6)
                         .stroke(Color.noteszDarkGray, lineWidth: 1)
@@ -143,9 +195,17 @@ struct TaskDetailsView: View {
                                 .frame(width: CGFloat(viewModel.lineWidth), height: CGFloat(viewModel.lineWidth))
                         }
                         .frame(width: 20, height: 30)
-                        Slider(value: $viewModel.lineWidth, in: 2...16, step: 0.1)
-                            .accentColor(Color.noteszBlue)
-                            .frame(height: 34)
+                        HStack {
+                            Text("2")
+                                .font(.system(size: 12.0))
+                                .fontWeight(.semibold)
+                            Slider(value: $viewModel.lineWidth, in: 2...16, step: 0.1)
+                                .accentColor(Color.noteszBlue)
+                                .frame(height: 34)
+                            Text("16")
+                                .font(.system(size: 12.0))
+                                .fontWeight(.semibold)
+                        }
                     }
                     .padding([.top, .bottom], 8)
                     .padding([.leading, .trailing], 14)
@@ -157,6 +217,42 @@ struct TaskDetailsView: View {
                 }
                 .padding([.leading, .trailing], 12)
                 .padding(.top, 10)
+
+                HStack {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Image(systemName: "calendar")
+                            Text("Határidő:")
+                                .font(.system(size: 12.0))
+                                .fontWeight(.light)
+                                .foregroundColor(.black)
+                            Text("nincs megadva")
+                                .font(.system(size: 12.0))
+                                .fontWeight(.semibold)
+                                .foregroundColor(.black)
+                        }
+                        .frame(height: 34)
+                        .padding([.top, .bottom], 8)
+                        .padding([.leading, .trailing], 14)
+                        .background(Color.clear)
+                        .onTapGesture {
+                            withAnimation {
+                                self.showDatePicker.toggle()
+                            }
+                        }
+                        if showDatePicker {
+                            DatePicker("", selection: $selectedDate, displayedComponents: .date)
+                            .labelsHidden()
+                        }
+                    }
+                }
+                .overlay(
+                    RoundedRectangle(cornerRadius: 6)
+                        .stroke(Color.black, lineWidth: 1)
+                )
+                .padding(.leading, 12)
+                .padding(.top, 8)
+
             }
         }
         .padding(.bottom, 0)
@@ -176,5 +272,6 @@ struct TaskDetails_Previews: PreviewProvider {
                 Task(typedData: "Teszt cell", orderId: 0)
             )
         )
+        .previewDevice(PreviewDevice(rawValue: "iPad Pro (11-inch)"))
     }
 }

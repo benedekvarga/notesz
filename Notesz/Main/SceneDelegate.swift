@@ -8,6 +8,68 @@
 import UIKit
 import SwiftUI
 
+class KeyTestController<Content>: UIHostingController<Content> where Content: View {
+    override func becomeFirstResponder() -> Bool {
+        true
+    }
+
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(
+                title: "Új feladat",
+                image: nil,
+                action: #selector(newTask),
+                input: "n",
+                modifierFlags: .command,
+                propertyList: nil,
+                alternates: [],
+                discoverabilityTitle: "Új feladat",
+                attributes: .init(),
+                state: .on
+            ),
+            UIKeyCommand(
+                title: "Új projekt",
+                image: nil,
+                action: #selector(newTask),
+                input: "p",
+                modifierFlags: .command,
+                propertyList: nil,
+                alternates: [],
+                discoverabilityTitle: "Új projekt",
+                attributes: .init(),
+                state: .on
+            ),
+            UIKeyCommand(
+                title: "Új csoport",
+                image: nil,
+                action: #selector(newTask),
+                input: "g",
+                modifierFlags: .command,
+                propertyList: nil,
+                alternates: [],
+                discoverabilityTitle: "Új csoport",
+                attributes: .init(),
+                state: .on
+            )
+        ]
+    }
+
+    @objc
+    func newTask() {
+        print("new task")
+    }
+
+    @objc
+    func newProject() {
+        print("new project")
+    }
+
+    @objc
+    func newGroup() {
+        print("new group")
+    }
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
@@ -25,7 +87,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = KeyTestController(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
         }
