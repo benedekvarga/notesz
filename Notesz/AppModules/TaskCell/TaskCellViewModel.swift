@@ -30,6 +30,10 @@ class TaskCellViewModel: ObservableObject, Identifiable {
 
     // MARK: - Functions
 
+    func deleteTask() {
+        print("delete task")
+    }
+
     private func binds() {
         $task
         .sink(receiveValue: { [weak self] task in

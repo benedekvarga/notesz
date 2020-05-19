@@ -74,30 +74,33 @@ struct TaskCellView: View, RootViewProtocol {
             }
             .frame(height: 70)
             .contextMenu {
-                Button(action: {
-                    // change country setting
-                }) {
-                    Text("Kész")
-                    Image(systemName: "checkmark.circle")
-                        .resizable()
-                        .frame(width: 14, height: 14)
-                }
-                Button(action: {
-                    // change country setting
-                }) {
-                    Text("Részletek")
-                    Image(systemName: "ellipsis.circle")
-                        .resizable()
-                        .frame(width: 14, height: 14)
-                }
-                Button(action: {
-                    // enable geolocation
-                }) {
-                    Text("Törlés")
-                    Image(systemName: "trash")
-                        .resizable()
-                        .frame(width: 14, height: 14)
-                }
+                Button(
+                    action: {
+                        self.viewModel.isCompleted.toggle()
+                    },
+                    label: {
+                        Text(viewModel.isCompleted ? "Nincs kész" : "Kész")
+                        Image(systemName: "checkmark.circle")
+                    }
+                )
+                Button(
+                    action: {
+                        self.viewModel.showDetails.toggle()
+                    },
+                    label: {
+                        Text("Részletek")
+                        Image(systemName: "ellipsis.circle")
+                    }
+                )
+                Button(
+                    action: {
+                        self.viewModel.deleteTask()
+                    },
+                    label: {
+                        Text("Törlés")
+                        Image(systemName: "trash")
+                    }
+                )
             }
         }
         .padding(.bottom, 0)

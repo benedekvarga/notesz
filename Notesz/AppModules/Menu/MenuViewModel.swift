@@ -99,4 +99,20 @@ class MenuViewModel: ObservableObject, Identifiable {
             return GroupViewModel(group: group)
         }
     }
+
+    func newProject(in group: Group) {
+        print("Uj projekt \(group.name) csoporthoz")
+    }
+
+    func delete(group: Group) {
+        print("Delete \(group.name)")
+    }
+
+    func newTask(in project: Project) {
+        print("Uj feladat \(project.name) projekthez")
+    }
+
+    func delete(project: Project) {
+        print("Delete", project.name)
+    }
 }

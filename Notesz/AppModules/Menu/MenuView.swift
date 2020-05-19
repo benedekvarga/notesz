@@ -19,7 +19,7 @@ struct MenuView: View {
                         .contextMenu {
                             Button(
                                 action: {
-
+                                    self.viewModel.newProject(in: group.group)
                                 },
                                 label: {
                                     Text("Új projekt")
@@ -28,6 +28,7 @@ struct MenuView: View {
                             )
                             Button(
                                 action: {
+                                    self.viewModel.delete(group: group.group)
                                 },
                                 label: {
                                     Text("Törlés")
@@ -42,7 +43,7 @@ struct MenuView: View {
                                 .contextMenu {
                                     Button(
                                         action: {
-
+                                            self.viewModel.newTask(in: project.project)
                                         },
                                         label: {
                                             Text("Új feladat")
@@ -51,7 +52,7 @@ struct MenuView: View {
                                     )
                                     Button(
                                         action: {
-
+                                            self.viewModel.delete(project: project.project)
                                         },
                                         label: {
                                             Text("Törlés")
