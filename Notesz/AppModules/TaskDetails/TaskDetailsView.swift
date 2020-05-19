@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TaskDetailsView: View {
     @ObservedObject private var viewModel: TaskDetailsViewModel
-    @State var shouldClearCanvas = 0
     @State private var selectedDate = Date()
     @State private var showDatePicker = false
 
@@ -29,18 +28,18 @@ struct TaskDetailsView: View {
                             .fontWeight(.light)
                             .foregroundColor(.black)
                             .padding(.leading)
-                        Text("Háztartás")
+                        Text(viewModel.project)
                             .font(.system(size: 12.0))
                             .fontWeight(.semibold)
                             .foregroundColor(.black)
                             .padding(.trailing)
                     }
                     .frame(height: 50)
-                    .background(viewModel.isCompleted ? Color.green : Color.clear)
+                    .background(Color.clear)
                     .cornerRadius(6)
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
-                            .stroke(viewModel.isCompleted ? Color.green : Color.black, lineWidth: 1)
+                            .stroke(Color.black, lineWidth: 1)
                     )
                     Spacer()
                     HStack(alignment: .center) {
@@ -49,18 +48,18 @@ struct TaskDetailsView: View {
                             .fontWeight(.light)
                             .foregroundColor(.black)
                             .padding(.leading)
-                        Text("20 perc")
+                        Text(viewModel.duration)
                             .font(.system(size: 12.0))
                             .fontWeight(.semibold)
                             .foregroundColor(.black)
                             .padding(.trailing)
                     }
                     .frame(height: 50)
-                    .background(viewModel.isCompleted ? Color.green : Color.clear)
+                    .background(Color.clear)
                     .cornerRadius(6)
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
-                            .stroke(viewModel.isCompleted ? Color.green : Color.black, lineWidth: 1)
+                            .stroke(Color.black, lineWidth: 1)
                     )
                 }
                 .padding([.leading, .trailing], 12)
@@ -71,9 +70,9 @@ struct TaskDetailsView: View {
                         .background(Color.clear)
                     if viewModel.penToolSelected {
                         PKCanvasViewRepresentable(
-                            shouldClearData: $shouldClearCanvas,
+                            shouldClearData: $viewModel.shouldClearCanvas,
                             penColor: $viewModel.lineColor,
-                            eraserSelected: $viewModel.eraserSelected,
+                            eraserSelected: $viewModel.isEraserSelected,
                             lineWidth: $viewModel.lineWidth
                         )
                             .padding([.top, .bottom], 2)
@@ -82,7 +81,7 @@ struct TaskDetailsView: View {
                     } else {
                         VStack(alignment: .center) {
                             Spacer()
-                            TextField("Add new task", text: $viewModel.typedData)
+                            TextField("Adj hozzá új teendőt", text: $viewModel.typedData)
                                 .background(Color.clear)
                                 .font(.system(size: 16.0))
                             Spacer()
@@ -147,7 +146,7 @@ struct TaskDetailsView: View {
                             .foregroundColor(.black)
                             .frame(width: 18, height: 18, alignment: .center)
                             .onTapGesture {
-                                print("black")
+                                self.viewModel.lineColor = .black
                             }
                         Image(systemName: "circle.fill")
                             .resizable()
@@ -156,7 +155,7 @@ struct TaskDetailsView: View {
                             .foregroundColor(.blue)
                             .frame(width: 18, height: 18, alignment: .center)
                             .onTapGesture {
-                                print("blue")
+                                self.viewModel.lineColor = .blue
                             }
                         Image(systemName: "circle.fill")
                             .resizable()
@@ -165,7 +164,7 @@ struct TaskDetailsView: View {
                             .foregroundColor(.green)
                             .frame(width: 18, height: 18, alignment: .center)
                             .onTapGesture {
-                                print("green")
+                                self.viewModel.lineColor = .green
                             }
                         Image(systemName: "circle.fill")
                             .resizable()
@@ -174,7 +173,7 @@ struct TaskDetailsView: View {
                             .foregroundColor(.red)
                             .frame(width: 18, height: 18, alignment: .center)
                             .onTapGesture {
-                                print("red")
+                                self.viewModel.lineColor = .red
                             }
                     }
                     .frame(height: 34)
@@ -200,10 +199,10 @@ struct TaskDetailsView: View {
                             Text("2")
                                 .font(.system(size: 12.0))
                                 .fontWeight(.semibold)
-                            Slider(value: $viewModel.lineWidth, in: 2...16, step: 0.1)
+                            Slider(value: $viewModel.lineWidth, in: 2...10, step: 0.1)
                                 .accentColor(Color.noteszBlue)
                                 .frame(height: 34)
-                            Text("16")
+                            Text("10")
                                 .font(.system(size: 12.0))
                                 .fontWeight(.semibold)
                         }
@@ -221,17 +220,17 @@ struct TaskDetailsView: View {
                             .resizable()
                             .frame(width: 24, height: 24)
                             .font(Font.title.weight(.light))
-                            .foregroundColor(viewModel.isCompleted ? Color.white : Color.black)
+                            .foregroundColor(viewModel.isEraserSelected ? Color.red : Color.black)
                     }
                     .frame(width: 50, height: 50)
-                    .background(viewModel.isCompleted ? Color.green : Color.clear)
+                    .background(Color.clear)
                     .cornerRadius(6)
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
-                            .stroke(viewModel.isCompleted ? Color.green : Color.black, lineWidth: 1)
+                            .stroke(Color.black, lineWidth: 1)
                     )
                     .onTapGesture {
-                        self.viewModel.isCompleted.toggle()
+                        self.viewModel.isEraserSelected.toggle()
                     }
 
                     ZStack {
@@ -243,14 +242,14 @@ struct TaskDetailsView: View {
                             .foregroundColor(Color.red)
                     }
                     .frame(width: 50, height: 50)
-                    .background(viewModel.isCompleted ? Color.green : Color.clear)
+                    .background(Color.clear)
                     .cornerRadius(6)
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
-                            .stroke(viewModel.isCompleted ? Color.green : Color.black, lineWidth: 1)
+                            .stroke(Color.black, lineWidth: 1)
                     )
                     .onTapGesture {
-                        self.viewModel.isCompleted.toggle()
+                        self.viewModel.shouldClearCanvas += 1
                     }
                 }
                 .padding([.leading, .trailing], 12)
@@ -264,7 +263,7 @@ struct TaskDetailsView: View {
                                 .font(.system(size: 12.0))
                                 .fontWeight(.light)
                                 .foregroundColor(.black)
-                            Text("nincs megadva")
+                            Text(viewModel.deadlineText)
                                 .font(.system(size: 12.0))
                                 .fontWeight(.semibold)
                                 .foregroundColor(.black)
@@ -279,7 +278,7 @@ struct TaskDetailsView: View {
                             }
                         }
                         if showDatePicker {
-                            DatePicker("", selection: $selectedDate, displayedComponents: .date)
+                            DatePicker("", selection: $viewModel.deadlineDate, displayedComponents: .date)
                             .labelsHidden()
                         }
                     }
@@ -303,7 +302,7 @@ struct TaskDetailsView: View {
                             .padding(.trailing)
                     }
                     .frame(height: 50)
-                    .background(viewModel.isCompleted ? Color.green : Color.clear)
+                    .background(Color.clear)
                     .cornerRadius(6)
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
@@ -328,7 +327,7 @@ struct TaskDetails_Previews: PreviewProvider {
     static var previews: some View {
         TaskDetailsView(viewModel:
             TaskDetailsViewModel(task:
-                Task(typedData: "Teszt cell", orderId: 0)
+                Task(typedData: "Teszt cell", orderId: 0), project: "Háztartás"
             )
         )
         .previewDevice(PreviewDevice(rawValue: "iPad Pro (11-inch)"))

@@ -36,7 +36,7 @@ class TaskListViewModel: ObservableObject, Identifiable {
         .sink(receiveValue: { [weak self] project in
             guard let self = self else { return }
 
-            self.dataSource = project.tasks.map { TaskCellViewModel(task: $0) }
+            self.dataSource = project.tasks.map { TaskCellViewModel(task: $0, project: project.name) }
             self.name = project.name
         })
         .store(in: &subscriptions)
