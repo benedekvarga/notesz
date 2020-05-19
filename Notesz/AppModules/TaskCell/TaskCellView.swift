@@ -12,7 +12,6 @@ struct TaskCellView: View, RootViewProtocol {
     // MARK: - Properties
 
     @ObservedObject private var viewModel: TaskCellViewModel
-    @State var shouldClearCanvas = 0
 
     // MARK: - RootViewProtocol properties
 
@@ -30,7 +29,7 @@ struct TaskCellView: View, RootViewProtocol {
                         .background(Color.clear)
                     if viewModel.penToolSelected {
                         PKCanvasViewRepresentable(
-                            shouldClearData: $shouldClearCanvas,
+                            shouldClearData: .constant(0),
                             penColor: .constant(.black),
                             eraserSelected: .constant(false),
                             lineWidth: .constant(CGFloat(2))
