@@ -23,27 +23,6 @@ struct TaskDetailsView: View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading) {
                 HStack {
-                    Spacer()
-                    HStack(alignment: .center) {
-                        Text("Csoport:")
-                            .font(.system(size: 12.0))
-                            .fontWeight(.light)
-                            .foregroundColor(.black)
-                            .padding(.leading)
-                        Text("Személyes")
-                            .font(.system(size: 12.0))
-                            .fontWeight(.semibold)
-                            .foregroundColor(.black)
-                            .padding(.trailing)
-                    }
-                    .frame(height: 50)
-                    .background(viewModel.isCompleted ? Color.green : Color.clear)
-                    .cornerRadius(6)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 6)
-                            .stroke(viewModel.isCompleted ? Color.green : Color.black, lineWidth: 1)
-                    )
-
                     HStack(alignment: .center) {
                         Text("Projekt:")
                             .font(.system(size: 12.0))
@@ -63,8 +42,28 @@ struct TaskDetailsView: View {
                         RoundedRectangle(cornerRadius: 6)
                             .stroke(viewModel.isCompleted ? Color.green : Color.black, lineWidth: 1)
                     )
+                    Spacer()
+                    HStack(alignment: .center) {
+                        Text("Időtartam:")
+                            .font(.system(size: 12.0))
+                            .fontWeight(.light)
+                            .foregroundColor(.black)
+                            .padding(.leading)
+                        Text("20 perc")
+                            .font(.system(size: 12.0))
+                            .fontWeight(.semibold)
+                            .foregroundColor(.black)
+                            .padding(.trailing)
+                    }
+                    .frame(height: 50)
+                    .background(viewModel.isCompleted ? Color.green : Color.clear)
+                    .cornerRadius(6)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(viewModel.isCompleted ? Color.green : Color.black, lineWidth: 1)
+                    )
                 }
-                .padding(.trailing, 12)
+                .padding([.leading, .trailing], 12)
                 .padding(.bottom, 8)
                 ZStack(alignment: .topTrailing) {
                     RoundedRectangle(cornerRadius: 6)
@@ -73,7 +72,9 @@ struct TaskDetailsView: View {
                     if viewModel.penToolSelected {
                         PKCanvasViewRepresentable(
                             shouldClearData: $shouldClearCanvas,
-                            penColor: .constant(.black)
+                            penColor: $viewModel.lineColor,
+                            eraserSelected: $viewModel.eraserSelected,
+                            lineWidth: $viewModel.lineWidth
                         )
                             .padding([.top, .bottom], 2)
                             .padding(.leading, 2)
@@ -95,10 +96,10 @@ struct TaskDetailsView: View {
                 HStack {
                     ZStack {
                         Image(systemName: viewModel.isCompleted ? "checkmark.circle.fill" : "checkmark.circle")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .font(Font.title.weight(.light))
-                        .foregroundColor(viewModel.isCompleted ? Color.white : Color.black)
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .font(Font.title.weight(.light))
+                            .foregroundColor(viewModel.isCompleted ? Color.white : Color.black)
                     }
                     .frame(width: 50, height: 50)
                     .background(viewModel.isCompleted ? Color.green : Color.clear)
@@ -214,6 +215,43 @@ struct TaskDetailsView: View {
                         RoundedRectangle(cornerRadius: 6)
                             .stroke(Color.black, lineWidth: 1)
                     )
+
+                    ZStack {
+                        Image(systemName: "pencil.slash")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .font(Font.title.weight(.light))
+                            .foregroundColor(viewModel.isCompleted ? Color.white : Color.black)
+                    }
+                    .frame(width: 50, height: 50)
+                    .background(viewModel.isCompleted ? Color.green : Color.clear)
+                    .cornerRadius(6)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(viewModel.isCompleted ? Color.green : Color.black, lineWidth: 1)
+                    )
+                    .onTapGesture {
+                        self.viewModel.isCompleted.toggle()
+                    }
+
+                    ZStack {
+                        Image(systemName: "delete.right")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .aspectRatio(contentMode: .fit)
+                            .font(Font.title.weight(.light))
+                            .foregroundColor(Color.red)
+                    }
+                    .frame(width: 50, height: 50)
+                    .background(viewModel.isCompleted ? Color.green : Color.clear)
+                    .cornerRadius(6)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(viewModel.isCompleted ? Color.green : Color.black, lineWidth: 1)
+                    )
+                    .onTapGesture {
+                        self.viewModel.isCompleted.toggle()
+                    }
                 }
                 .padding([.leading, .trailing], 12)
                 .padding(.top, 10)
@@ -245,14 +283,35 @@ struct TaskDetailsView: View {
                             .labelsHidden()
                         }
                     }
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(Color.black, lineWidth: 1)
+                    )
+                    Spacer()
+                    HStack(alignment: .center) {
+                        Image(systemName: "trash")
+                            .resizable()
+                            .font(Font.title.weight(.light))
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(.red)
+                            .frame(width: 24, height: 20, alignment: .center)
+                            .padding(.leading, 8)
+                        Text("Törlés")
+                            .font(.system(size: 12.0))
+                            .fontWeight(.semibold)
+                            .foregroundColor(.red)
+                            .padding(.trailing)
+                    }
+                    .frame(height: 50)
+                    .background(viewModel.isCompleted ? Color.green : Color.clear)
+                    .cornerRadius(6)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(Color.red, lineWidth: 1)
+                    )
                 }
-                .overlay(
-                    RoundedRectangle(cornerRadius: 6)
-                        .stroke(Color.black, lineWidth: 1)
-                )
-                .padding(.leading, 12)
+                .padding([.leading, .trailing], 12)
                 .padding(.top, 8)
-
             }
         }
         .padding(.bottom, 0)

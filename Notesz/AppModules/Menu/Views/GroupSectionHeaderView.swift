@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GroupSectionHeaderView: View {
     @Binding var title: String
+    @Binding var duration: Int
 
     var body: some View {
         VStack {
@@ -21,6 +22,13 @@ struct GroupSectionHeaderView: View {
                     .frame(maxHeight: .infinity)
                     .padding(.bottom, -10)
                 Spacer()
+                Text("\(duration) perc")
+                    .font(.system(size: 16.0))
+                    .fontWeight(.semibold)
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxHeight: .infinity)
+                    .padding(.bottom, -10)
             }
         }
         .frame(minHeight: 50)
@@ -41,7 +49,7 @@ struct FillAll: View {
 
 struct GroupSectionHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupSectionHeaderView(title: .constant("Munka"))
+        GroupSectionHeaderView(title: .constant("Munka"), duration: .constant(170))
         .previewLayout(.fixed(width: 300, height: 50))
     }
 }

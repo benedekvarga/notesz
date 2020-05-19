@@ -18,11 +18,12 @@ struct Task: Taggable, Ordered {
     public var deadline: Date?
     public var tags: [Tag]
 
-    public init(typedData: String, completed: Bool = false, orderId: Int, creationDate: Date = Date()) {
+    public init(typedData: String, completed: Bool = false, orderId: Int, creationDate: Date = Date(), duration: Int? = nil) {
         self.typedData = typedData
         self.completed = completed
         self.orderId = orderId
         self.creationDate = creationDate
+        self.duration = duration
         self.tags = []
     }
 }

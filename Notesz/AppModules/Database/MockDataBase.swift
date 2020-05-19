@@ -22,38 +22,44 @@ class MockDataBase {
                         name: "Háztartás",
                         orderId: 0,
                         tasks: [
-                            Task(typedData: "Porszívózz ki", orderId: 0),
-                            Task(typedData: "Vidd le a szemetet", orderId: 1),
-                            Task(typedData: "Vásárolj be", orderId: 2)
+                            Task(typedData: "Porszívózz ki", completed: true, orderId: 0, duration: 20),
+                            Task(typedData: "Vidd le a szemetet", orderId: 1, duration: 5),
+                            Task(typedData: "Vásárolj be", completed: true, orderId: 2, duration: 90)
                         ]
                     ),
                     Project(
                         name: "Bevásárlás",
                         orderId: 1,
                         tasks: [
-                            Task(typedData: "Sonka", orderId: 0),
+                            Task(typedData: "Sonka", completed: true, orderId: 0),
                             Task(typedData: "Paradicsomszósz", orderId: 1),
                             Task(typedData: "Pizzaliszt", orderId: 2),
-                            Task(typedData: "Mozzarella", orderId: 3),
+                            Task(typedData: "Mozzarella", completed: true, orderId: 3),
                             Task(typedData: "Bazsalikom", orderId: 4)
                         ]
                     )
                 ]
             ),
-            Group(name: "Munka",
+            Group(name: "Fejlesztés",
                 orderId: 1,
                 projects: [
                     Project(
-                        name: "Notesz",
+                        name: "Notesz app",
                         orderId: 0,
                         tasks: [
-                            Task(typedData: "Drag and drop reorder", orderId: 0),
-                            Task(typedData: "Kurzortámogatás", orderId: 1),
-                            Task(typedData: "TaskCellView UI liftup", orderId: 2),
-                            Task(typedData: "Task törlés", orderId: 3),
-                            Task(typedData: "Project törlés", orderId: 4),
-                            Task(typedData: "Group törlés", orderId: 5),
-                            Task(typedData: "Context menü", orderId: 6)
+                            Task(typedData: "Kurzortámogatás", completed: true, orderId: 0, duration: 150),
+                            Task(typedData: "TaskCellView UI liftup", orderId: 1),
+                            Task(typedData: "Task törlés", orderId: 2),
+                            Task(typedData: "Project törlés", orderId: 3),
+                            Task(typedData: "Group törlés", orderId: 4),
+                            Task(typedData: "Context menü", completed: true, orderId: 5)
+                        ]
+                    ),
+                    Project(
+                        name: "Dashboard app",
+                        orderId: 1,
+                        tasks: [
+                            Task(typedData: "Brainstorming", orderId: 0, duration: 300)
                         ]
                     )
                 ]

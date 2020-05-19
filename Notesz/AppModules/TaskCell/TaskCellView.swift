@@ -31,7 +31,9 @@ struct TaskCellView: View, RootViewProtocol {
                     if viewModel.penToolSelected {
                         PKCanvasViewRepresentable(
                             shouldClearData: $shouldClearCanvas,
-                            penColor: .constant(.black)
+                            penColor: .constant(.black),
+                            eraserSelected: .constant(false),
+                            lineWidth: .constant(CGFloat(2))
                         )
                         .padding([.top, .bottom], 2)
                         .padding(.leading, 2)

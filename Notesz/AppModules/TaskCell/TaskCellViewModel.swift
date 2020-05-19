@@ -7,44 +7,36 @@
 import Combine
 import Foundation
 
-class TaskCellViewModel: RootViewModel, ObservableObject, Identifiable {
+class TaskCellViewModel: ObservableObject, Identifiable {
     // MARK: - Properties
 
+    private var subscriptions = Set<AnyCancellable>()
+
+    @Published public var task: Task
     @Published public var writtenData: Data?
-    @Published public var typedData: String
+    @Published public var typedData: String = ""
     @Published public var isCompleted = false
     @Published public var penToolSelected: Bool
     @Published public var showDetails = false
 
-    var task: Task
-    private var subscriptions = Set<AnyCancellable>()
-
     init(task: Task) {
-        self.writtenData = task.writtenData
-        self.typedData = task.typedData ?? ""
-        self.penToolSelected = task.typedData == nil
         self.task = task
+        self.penToolSelected = task.writtenData != nil
 
-        super.init()
+        binds()
     }
 
-    override func createBindings() {
-        $writtenData
-            .sink(receiveValue: { [weak self] data in
-                self?.task.writtenData = data
-            })
-            .store(in: &subscriptions)
+    // MARK: - Functions
 
-        $typedData
-            .sink(receiveValue: { [weak self] data in
-                self?.task.typedData = data
-            })
-            .store(in: &subscriptions)
+    private func binds() {
+        $task
+        .sink(receiveValue: { [weak self] task in
+            guard let self = self else { return }
 
-        $isCompleted
-            .sink(receiveValue: { [weak self] data in
-                self?.task.completed = data
-            })
-            .store(in: &subscriptions)
+            self.writtenData = task.writtenData
+            self.typedData = task.typedData ?? ""
+            self.isCompleted = task.completed
+        })
+        .store(in: &subscriptions)
     }
 }

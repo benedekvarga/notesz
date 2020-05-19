@@ -10,24 +10,35 @@ import Combine
 class TaskListViewModel: ObservableObject, Identifiable {
     // MARK: - Properties
 
-    @Published var dataSource: [TaskCellViewModel]
-    @Published var name: String
+    @Published private var project: Project
+    private var subscriptions = Set<AnyCancellable>()
 
-    private let tasks: [Task]
+    @Published var dataSource: [TaskCellViewModel] = []
+    @Published var name: String = ""
 
     // MARK: - Initialization
 
-    init(name: String, tasks: [Task]) {
-        self.name = name
-        self.dataSource = tasks.map { TaskCellViewModel(task: $0) }
-        self.tasks = tasks
+    init(project: Project) {
+        self.project = project
+
+        binds()
     }
 
-    // MARK: - Public functions
+    // MARK: - Functions
 
     public func newTask() {
         let task = Task(typedData: "", orderId: dataSource.count)
-        let viewModel = TaskCellViewModel(task: task)
-        dataSource.append(viewModel)
+        project.tasks.append(task)
+    }
+
+    private func binds() {
+        $project
+        .sink(receiveValue: { [weak self] project in
+            guard let self = self else { return }
+
+            self.dataSource = project.tasks.map { TaskCellViewModel(task: $0) }
+            self.name = project.name
+        })
+        .store(in: &subscriptions)
     }
 }

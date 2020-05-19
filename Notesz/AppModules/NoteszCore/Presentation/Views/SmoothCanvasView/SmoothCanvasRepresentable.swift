@@ -13,6 +13,8 @@ struct SmoothCanvasRepresentable: UIViewRepresentable {
 
     @Binding var shouldClearData: Int
     @Binding var penColor: UIColor
+    @Binding var eraserSelected: Bool
+    @Binding var lineWidth: CGFloat
 
     // MARK: - UIViewRepresentable functions
 
@@ -25,11 +27,15 @@ struct SmoothCanvasRepresentable: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: SmoothCanvasView, context: Context) {
-        print("update SmoothCanvasRepresentable")
         if shouldClearData > 0 {
             uiView.clearCanvas()
+            DispatchQueue.main.async {
+                self.shouldClearData = 0
+            }
         }
 
         uiView.lineColor = penColor
+        uiView.lineWidth = lineWidth * 1.4
+        uiView.isEraser = eraserSelected
     }
 }

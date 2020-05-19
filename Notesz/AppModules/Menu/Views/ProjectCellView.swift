@@ -10,6 +10,7 @@ import SwiftUI
 struct ProjectCellView: View {
     @Binding var title: String
     @Binding var numberOfCompletedTasks: String
+    @Binding var duration: Int
 
     var body: some View {
         VStack {
@@ -30,6 +31,16 @@ struct ProjectCellView: View {
                     .padding([.leading, .trailing], 10)
                     .background(Color.noteszDarkBlue)
                     .cornerRadius(10, antialiased: true)
+
+                Text("\(duration) perc")
+                    .font(.system(size: 12.0))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
+                    .padding([.top, .bottom], 6)
+                    .padding([.leading, .trailing], 10)
+                    .background(Color.noteszDarkBlue)
+                    .cornerRadius(10, antialiased: true)
                 Spacer()
             }
         }
@@ -39,7 +50,7 @@ struct ProjectCellView: View {
 
 struct ProjectCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectCellView(title: .constant("Shopping"), numberOfCompletedTasks: .constant("2/5"))
+        ProjectCellView(title: .constant("Shopping"), numberOfCompletedTasks: .constant("2/5"), duration: .constant(30))
         .previewLayout(.fixed(width: 300, height: 40))
     }
 }

@@ -11,10 +11,15 @@ import SwiftUI
 struct CompareView: View {
     // MARK: - Views
 
-    @State var shouldClearSmoothCanvas = 0
     @State var shouldClearPKCanvas = 0
     @State var selectedPKCanvasColor = UIColor.black
+    @State var pkLineWidth: CGFloat = 2
+    @State var pkEraserSelected = false
+
+    @State var shouldClearSmoothCanvas = 0
     @State var selectedSmoothCanvasColor = UIColor.black
+    @State var smoothLineWidth: CGFloat = 2
+    @State var smoothEraserSelected = false
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -24,51 +29,92 @@ struct CompareView: View {
                 .padding([.leading, .trailing], 24)
                 .padding(.bottom, -6)
             ZStack(alignment: .topTrailing) {
-                PKCanvasViewRepresentable(shouldClearData: $shouldClearPKCanvas, penColor: $selectedPKCanvasColor)
+                PKCanvasViewRepresentable(
+                        shouldClearData: $shouldClearPKCanvas,
+                        penColor: $selectedPKCanvasColor,
+                        eraserSelected: $pkEraserSelected,
+                        lineWidth: $pkLineWidth
+                    )
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
                             .stroke(Color.noteszDarkGray, lineWidth: 1)
                 )
-                HStack {
+                VStack {
                     HStack {
-                        Text("Pen color:")
-                            .padding(.leading, 8)
-                            .font(.subheadline)
+                        HStack {
+                            Text("Szín:")
+                                .padding(.leading, 8)
+                                .font(.subheadline)
+                            Button(action: {
+                                self.selectedPKCanvasColor = .black
+                            }, label: {
+                                Image(systemName: selectedPKCanvasColor == .some(.black) ? "largecircle.fill.circle" : "circle.fill")
+                                    .resizable()
+                                    .foregroundColor(UIColor.black.color)
+                                    .frame(width: 18, height: 18, alignment: .center)
+                            })
+                            Button(action: {
+                                self.selectedPKCanvasColor = .blue
+                            }, label: {
+                                Image(systemName: selectedPKCanvasColor == .some(.blue) ? "largecircle.fill.circle" : "circle.fill")
+                                    .resizable()
+                                    .foregroundColor(UIColor.blue.color)
+                                    .frame(width: 18, height: 18, alignment: .center)
+                            })
+                            Button(action: {
+                                self.selectedPKCanvasColor = .red
+                            }, label: {
+                                Image(systemName: selectedPKCanvasColor == .some(.red) ? "largecircle.fill.circle" : "circle.fill")
+                                    .resizable()
+                                    .foregroundColor(UIColor.red.color)
+                                    .frame(width: 18, height: 18, alignment: .center)
+                            })
+                        }
+                        Spacer()
                         Button(action: {
-                            self.selectedPKCanvasColor = .black
+                            self.pkEraserSelected.toggle()
                         }, label: {
-                            Image(systemName: selectedPKCanvasColor == .some(.black) ? "largecircle.fill.circle" : "circle.fill")
+                            Image(systemName: pkEraserSelected ? "pencil.slash" : "pencil")
                                 .resizable()
-                                .foregroundColor(UIColor.black.color)
-                                .frame(width: 18, height: 18, alignment: .center)
+                                .frame(width: 18, height: 18)
+                                .foregroundColor(.black)
+                                .padding(8)
                         })
                         Button(action: {
-                            self.selectedPKCanvasColor = .blue
+                            self.shouldClearPKCanvas += 1
                         }, label: {
-                            Image(systemName: selectedPKCanvasColor == .some(.blue) ? "largecircle.fill.circle" : "circle.fill")
+                            Image(systemName: "clear")
                                 .resizable()
-                                .foregroundColor(UIColor.blue.color)
-                                .frame(width: 18, height: 18, alignment: .center)
-                        })
-                        Button(action: {
-                            self.selectedPKCanvasColor = .red
-                        }, label: {
-                            Image(systemName: selectedPKCanvasColor == .some(.red) ? "largecircle.fill.circle" : "circle.fill")
-                                .resizable()
-                                .foregroundColor(UIColor.red.color)
-                                .frame(width: 18, height: 18, alignment: .center)
+                                .frame(width: 18, height: 18)
+                                .foregroundColor(.red)
+                                .padding(8)
                         })
                     }
                     Spacer()
-                    Button(action: {
-                        self.shouldClearPKCanvas += 1
-                    }, label: {
-                        Image(systemName: "clear")
-                            .resizable()
-                            .frame(width: 18, height: 18)
-                            .foregroundColor(.red)
-                            .padding(8)
-                    })
+                    HStack(alignment: .center) {
+                        Text("Vonalvastagság:")
+                            .font(.system(size: 12.0))
+                            .fontWeight(.light)
+                            .foregroundColor(.black)
+                        ZStack {
+                            Circle()
+                                .frame(width: CGFloat(pkLineWidth), height: CGFloat(pkLineWidth))
+                        }
+                        .frame(width: 20, height: 30)
+                        HStack {
+                            Text("1")
+                                .font(.system(size: 12.0))
+                                .fontWeight(.semibold)
+                            Slider(value: $pkLineWidth, in: 1...20, step: 0.1)
+                                .accentColor(Color.noteszBlue)
+                                .frame(height: 34)
+                            Text("20")
+                                .font(.system(size: 12.0))
+                                .fontWeight(.semibold)
+                        }
+                    }
+                    .padding([.leading, .trailing], 24)
+                    .padding(.bottom)
                 }
             }
             .padding([.leading, .trailing], 24)
@@ -79,56 +125,97 @@ struct CompareView: View {
                 .padding([.leading, .trailing], 24)
                 .padding(.bottom, -6)
             ZStack(alignment: .topTrailing) {
-                SmoothCanvasRepresentable(shouldClearData: $shouldClearSmoothCanvas, penColor: $selectedSmoothCanvasColor)
+                SmoothCanvasRepresentable(
+                        shouldClearData: $shouldClearSmoothCanvas,
+                        penColor: $selectedSmoothCanvasColor,
+                        eraserSelected: $smoothEraserSelected,
+                        lineWidth: $smoothLineWidth
+                    )
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
-                            .stroke(Color.noteszDarkGray, lineWidth: 1)
+                        .stroke(Color.noteszDarkGray, lineWidth: 1)
                 )
-                HStack {
+                VStack {
                     HStack {
-                        Text("Pen color:")
-                            .padding(.leading, 8)
-                            .font(.subheadline)
+                        HStack {
+                            Text("Szín:")
+                                .padding(.leading, 8)
+                                .font(.subheadline)
+                            Button(action: {
+                                self.selectedSmoothCanvasColor = .black
+                            }, label: {
+                                Image(systemName: selectedSmoothCanvasColor == .some(.black) ? "largecircle.fill.circle" : "circle.fill")
+                                    .resizable()
+                                    .foregroundColor(UIColor.black.color)
+                                    .frame(width: 18, height: 18, alignment: .center)
+                            })
+                            Button(action: {
+                                self.selectedSmoothCanvasColor = .blue
+                            }, label: {
+                                Image(systemName: selectedSmoothCanvasColor == .some(.blue) ? "largecircle.fill.circle" : "circle.fill")
+                                    .resizable()
+                                    .foregroundColor(UIColor.blue.color)
+                                    .frame(width: 18, height: 18, alignment: .center)
+                            })
+                            Button(action: {
+                                self.selectedSmoothCanvasColor = .red
+                            }, label: {
+                                Image(systemName: selectedSmoothCanvasColor == .some(.red) ? "largecircle.fill.circle" : "circle.fill")
+                                    .resizable()
+                                    .foregroundColor(UIColor.red.color)
+                                    .frame(width: 18, height: 18, alignment: .center)
+                            })
+                        }
+                        Spacer()
                         Button(action: {
-                            self.selectedSmoothCanvasColor = .black
+                            self.smoothEraserSelected.toggle()
                         }, label: {
-                            Image(systemName: selectedSmoothCanvasColor == .some(.black) ? "largecircle.fill.circle" : "circle.fill")
+                            Image(systemName: smoothEraserSelected ? "pencil.slash" : "pencil")
                                 .resizable()
-                                .foregroundColor(UIColor.black.color)
-                                .frame(width: 18, height: 18, alignment: .center)
+                                .frame(width: 18, height: 18)
+                                .foregroundColor(.black)
+                                .padding(8)
                         })
                         Button(action: {
-                            self.selectedSmoothCanvasColor = .blue
+                            self.shouldClearSmoothCanvas += 1
                         }, label: {
-                            Image(systemName: selectedSmoothCanvasColor == .some(.blue) ? "largecircle.fill.circle" : "circle.fill")
+                            Image(systemName: "clear")
                                 .resizable()
-                                .foregroundColor(UIColor.blue.color)
-                                .frame(width: 18, height: 18, alignment: .center)
-                        })
-                        Button(action: {
-                            self.selectedSmoothCanvasColor = .red
-                        }, label: {
-                            Image(systemName: selectedSmoothCanvasColor == .some(.red) ? "largecircle.fill.circle" : "circle.fill")
-                                .resizable()
-                                .foregroundColor(UIColor.red.color)
-                                .frame(width: 18, height: 18, alignment: .center)
+                                .frame(width: 18, height: 18)
+                                .foregroundColor(.red)
+                                .padding(8)
                         })
                     }
                     Spacer()
-                    Button(action: {
-                        self.shouldClearSmoothCanvas += 1
-                    }, label: {
-                        Image(systemName: "clear")
-                            .resizable()
-                            .frame(width: 18, height: 18)
-                            .foregroundColor(.red)
-                            .padding(8)
-                    })
+                    HStack(alignment: .center) {
+                        Text("Vonalvastagság:")
+                            .font(.system(size: 12.0))
+                            .fontWeight(.light)
+                            .foregroundColor(.black)
+                        ZStack {
+                            Circle()
+                                .frame(width: CGFloat(smoothLineWidth), height: CGFloat(smoothLineWidth))
+                        }
+                        .frame(width: 20, height: 30)
+                        HStack {
+                            Text("1")
+                                .font(.system(size: 12.0))
+                                .fontWeight(.semibold)
+                            Slider(value: $smoothLineWidth, in: 1...20, step: 0.1)
+                                .accentColor(Color.noteszBlue)
+                                .frame(height: 34)
+                            Text("20")
+                                .font(.system(size: 12.0))
+                                .fontWeight(.semibold)
+                        }
+                    }
+                    .padding([.leading, .trailing], 24)
+                    .padding(.bottom)
                 }
             }
             .padding([.leading, .trailing, .bottom], 24)
         }
-        .navigationBarTitle("Compare PKCanvas and SmoothCanvas")
+        .navigationBarTitle("PKCanvas és SmoothCanvas összehasonlítása")
     }
 }
 

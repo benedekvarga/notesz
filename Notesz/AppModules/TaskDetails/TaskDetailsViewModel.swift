@@ -7,14 +7,18 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 class TaskDetailsViewModel: RootViewModel, ObservableObject {
     @Published public var writtenData: Data?
     @Published public var typedData: String = ""
     @Published public var isCompleted: Bool = false
     @Published public var deadline: String = ""
+
     @Published public var penToolSelected: Bool = false
-    @Published public var lineWidth: Double = 2
+    @Published public var lineWidth: CGFloat = 2
+    @Published public var lineColor = UIColor.black
+    @Published public var eraserSelected = false
 
     private var task: Task
     private var subscriptions = Set<AnyCancellable>()

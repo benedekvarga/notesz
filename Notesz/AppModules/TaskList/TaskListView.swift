@@ -45,6 +45,6 @@ struct TaskListView: View {
 
 struct TaskListViewPreviews: PreviewProvider {
     static var previews: some View {
-        TaskListView(viewModel: TaskListViewModel(name: "Teszt projekt", tasks: []))
+        TaskListView(viewModel: TaskListViewModel(project: (MockDataBase.shared.database.first?.projects.first)!))
     }
 }

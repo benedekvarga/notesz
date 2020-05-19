@@ -13,6 +13,8 @@ struct PKCanvasViewRepresentable: UIViewRepresentable {
 
     @Binding var shouldClearData: Int
     @Binding var penColor: UIColor
+    @Binding var eraserSelected: Bool
+    @Binding var lineWidth: CGFloat
     @State var data: Data?
 
     // MARK: - UIViewRepresentable functions
@@ -30,7 +32,11 @@ struct PKCanvasViewRepresentable: UIViewRepresentable {
             uiView.drawing = PKDrawing()
         }
 
-        uiView.tool = PKInkingTool(.pen, color: penColor, width: 2)
+        if eraserSelected {
+            uiView.tool = PKEraserTool(.vector)
+        } else {
+            uiView.tool = PKInkingTool(.pen, color: penColor, width: lineWidth)
+        }
     }
 
     func makeCoordinator() -> PKCanvasViewRepresentable.Coordinator {
@@ -45,8 +51,10 @@ struct PKCanvasViewRepresentable: UIViewRepresentable {
         }
 
         func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
-            print("drawing changed")
-            canvas.data = canvasView.drawing.dataRepresentation()
+            DispatchQueue.main.async {
+                self.canvas.data = canvasView.drawing.dataRepresentation()
+                self.canvas.shouldClearData = 0
+            }
         }
     }
 }
