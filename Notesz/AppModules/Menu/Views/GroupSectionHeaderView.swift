@@ -8,27 +8,30 @@
 import SwiftUI
 
 struct GroupSectionHeaderView: View {
-    @Binding var title: String
-    @Binding var duration: Int
+    @ObservedObject private var viewModel: GroupSectionHeaderViewModel
+
+    init(viewModel: GroupSectionHeaderViewModel) {
+        self.viewModel = viewModel
+    }
 
     var body: some View {
         VStack {
             HStack {
-                Text(title)
+                Text(viewModel.name)
                     .font(.system(size: 22.0))
                     .fontWeight(.ultraLight)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                     .frame(maxHeight: .infinity)
                     .padding(.bottom, -10)
-                Spacer()
-                Text("\(duration) perc")
-                    .font(.system(size: 16.0))
+                Text(viewModel.duration)
+                    .font(.system(size: 14.0))
                     .fontWeight(.semibold)
-                    .foregroundColor(.black)
+                    .foregroundColor(.noteszBlue)
                     .multilineTextAlignment(.leading)
                     .frame(maxHeight: .infinity)
-                    .padding(.bottom, -10)
+                    .padding(.bottom, -15)
+                Spacer()
             }
         }
         .frame(minHeight: 50)
@@ -44,12 +47,5 @@ struct FillAll: View {
         GeometryReader { proxy in
             self.color.frame(width: proxy.size.width * 1.3, height: proxy.size.height).fixedSize()
         }
-    }
-}
-
-struct GroupSectionHeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        GroupSectionHeaderView(title: .constant("Munka"), duration: .constant(170))
-        .previewLayout(.fixed(width: 300, height: 50))
     }
 }

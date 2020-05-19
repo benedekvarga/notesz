@@ -8,49 +8,43 @@
 import SwiftUI
 
 struct ProjectCellView: View {
-    @Binding var title: String
-    @Binding var numberOfCompletedTasks: String
-    @Binding var duration: Int
+    @ObservedObject private var viewModel: ProjectCellViewModel
+
+    init(viewModel: ProjectCellViewModel) {
+        self.viewModel = viewModel
+    }
 
     var body: some View {
         VStack {
             HStack {
-                Text(title)
+                Text(viewModel.name)
                     .font(.system(size: 18.0))
                     .fontWeight(.light)
                     .foregroundColor(.black)
                     .frame(maxHeight: .infinity)
                     .padding(.leading, 12)
-
-                Text(numberOfCompletedTasks)
-                    .font(.system(size: 12.0))
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .multilineTextAlignment(.center)
-                    .padding([.top, .bottom], 6)
-                    .padding([.leading, .trailing], 10)
-                    .background(Color.noteszDarkBlue)
-                    .cornerRadius(10, antialiased: true)
-
-                Text("\(duration) perc")
-                    .font(.system(size: 12.0))
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .multilineTextAlignment(.center)
-                    .padding([.top, .bottom], 6)
-                    .padding([.leading, .trailing], 10)
-                    .background(Color.noteszDarkBlue)
-                    .cornerRadius(10, antialiased: true)
                 Spacer()
+                Text(viewModel.completed)
+                    .font(.system(size: 12.0))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
+                    .padding([.top, .bottom], 6)
+                    .padding([.leading, .trailing], 10)
+                    .background(Color.green)
+                    .cornerRadius(10, antialiased: true)
+                Text(viewModel.duration)
+                    .font(.system(size: 12.0))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
+                    .padding([.top, .bottom], 6)
+                    .padding([.leading, .trailing], 10)
+                    .background(Color.noteszDarkBlue)
+                    .cornerRadius(10, antialiased: true)
             }
         }
         .padding(0)
-    }
-}
-
-struct ProjectCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProjectCellView(title: .constant("Shopping"), numberOfCompletedTasks: .constant("2/5"), duration: .constant(30))
-        .previewLayout(.fixed(width: 300, height: 40))
+        .padding(.trailing, -20)
     }
 }

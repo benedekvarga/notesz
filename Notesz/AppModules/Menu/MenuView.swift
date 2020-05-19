@@ -15,44 +15,49 @@ struct MenuView: View {
         VStack(alignment: .leading, spacing: 12) {
             List {
                 ForEach(viewModel.data, id: \.self) { group in
-                    Section(header: GroupSectionHeaderView(title: .constant(group.name), duration: .constant(120)).background(Color.clear)
+                    Section(header: GroupSectionHeaderView(viewModel: GroupSectionHeaderViewModel(group: group.group)).background(Color.clear)
                         .contextMenu {
-                            Button(action: {
-                            }) {
-                                Text("Új projekt")
-                                Image(systemName: "plus.circle")
-                                    .resizable()
-                                    .frame(width: 14, height: 14)
-                            }
+                            Button(
+                                action: {
 
-                            Button(action: {
-                            }) {
-                                Text("Törlés")
-                                Image(systemName: "trash")
-                                    .resizable()
-                                    .frame(width: 14, height: 14)
-                            }
+                                },
+                                label: {
+                                    Text("Új projekt")
+                                    Image(systemName: "plus.circle")
+                                }
+                            )
+                            Button(
+                                action: {
+                                },
+                                label: {
+                                    Text("Törlés")
+                                    Image(systemName: "trash")
+                                }
+                            )
                         }
                     ) {
                         ForEach(group.projects, id: \.self) { project in
                             NavigationLink(destination: TaskListView(viewModel: TaskListViewModel(project: project.project))) {
-                                ProjectCellView(title: .constant(project.name), numberOfCompletedTasks: .constant(project.completed), duration: .constant(60))
+                                ProjectCellView(viewModel: ProjectCellViewModel(project: project.project))
                                 .contextMenu {
-                                    Button(action: {
-                                    }) {
-                                        Text("Új feladat")
-                                        Image(systemName: "plus.circle")
-                                            .resizable()
-                                            .frame(width: 14, height: 14)
-                                    }
+                                    Button(
+                                        action: {
 
-                                    Button(action: {
-                                    }) {
-                                        Text("Törlés")
-                                        Image(systemName: "trash")
-                                            .resizable()
-                                            .frame(width: 14, height: 14)
-                                    }
+                                        },
+                                        label: {
+                                            Text("Új feladat")
+                                            Image(systemName: "plus.circle")
+                                        }
+                                    )
+                                    Button(
+                                        action: {
+
+                                        },
+                                        label: {
+                                            Text("Törlés")
+                                            Image(systemName: "trash")
+                                        }
+                                    )
                                 }
                             }
                         }
@@ -69,7 +74,7 @@ struct MenuView: View {
                     .padding(12)
                     .padding(.trailing, 24)
                     .onTapGesture {
-                        print("uj csoport")
+
                     }
                 NavigationLink(destination: CompareView()) {
                     ZStack {
