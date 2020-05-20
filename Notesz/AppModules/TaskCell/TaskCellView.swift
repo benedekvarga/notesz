@@ -29,6 +29,9 @@ struct TaskCellView: View, RootViewProtocol {
                         .background(Color.clear)
                     if viewModel.penToolSelected {
                         PKCanvasViewRepresentable(
+                            task: $viewModel.task,
+                            project: $viewModel.project,
+                            group: $viewModel.group,
                             shouldClearData: .constant(0),
                             penColor: .constant(.black),
                             eraserSelected: .constant(false),

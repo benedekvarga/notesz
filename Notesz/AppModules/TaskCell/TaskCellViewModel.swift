@@ -47,6 +47,7 @@ class TaskCellViewModel: ObservableObject, Identifiable {
             guard let self = self else { return }
 
             self.task.writtenData = data
+            self.update(task: self.task)
         })
         .store(in: &subscriptions)
 
@@ -55,6 +56,7 @@ class TaskCellViewModel: ObservableObject, Identifiable {
             guard let self = self else { return }
 
             self.task.typedData = data
+            self.update(task: self.task)
         })
         .store(in: &subscriptions)
 
@@ -63,19 +65,35 @@ class TaskCellViewModel: ObservableObject, Identifiable {
             guard let self = self else { return }
 
             self.task.completed = data
+            self.update(task: self.task)
         })
         .store(in: &subscriptions)
 
-        $task
-        .sink(receiveValue: { [weak self] task in
-            guard let self = self else { return }
-
-            self.update(task: task)
+        $showDetails
+        .sink(receiveValue: { _ in
+            print("updateView")
+            
+            self.fetchTask()
+            self.updateView()
         })
         .store(in: &subscriptions)
     }
 
+    func updateView() {
+        self.writtenData = task.writtenData
+        self.typedData = task.typedData ?? ""
+        self.isCompleted = task.completed
+    }
+
     func update(task: Task) {
         DataBase.shared.update(task: task, projectId: self.project.orderId, groupId: self.group.orderId)
+    }
+
+    func fetchTask() {
+        let newTask = DataBase.shared.database[group.orderId].projects[project.orderId].tasks[task.orderId]
+
+        self.writtenData = newTask.writtenData
+        self.typedData = newTask.typedData ?? ""
+        self.isCompleted = newTask.completed
     }
 }

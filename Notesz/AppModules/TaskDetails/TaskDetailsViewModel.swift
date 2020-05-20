@@ -14,15 +14,15 @@ class TaskDetailsViewModel: ObservableObject {
 
     private var subscriptions = Set<AnyCancellable>()
     private var dateFormatter = DateFormatter()
-    @Published private var task: Task
 
+    @Published public var task: Task
     @Published public var project: Project
     @Published public var group: Group
     @Published public var duration = ""
     @Published public var writtenData: Data?
     @Published public var typedData = ""
     @Published public var isCompleted = false
-    @Published public var penToolSelected = false
+    @Published public var penToolSelected: Bool
     @Published public var lineColor = UIColor.black
     @Published public var lineWidth: CGFloat = 2
     @Published public var isEraserSelected = false
@@ -34,26 +34,60 @@ class TaskDetailsViewModel: ObservableObject {
         self.task = task
         self.project = project
         self.group = group
+
+        self.writtenData = task.writtenData
+        self.typedData = task.typedData ?? ""
+        self.isCompleted = task.completed
+        if let date = task.deadline {
+            self.deadlineDate = date
+        }
+
+        self.penToolSelected = task.writtenData != nil
+
         self.dateFormatter.dateFormat = "yyyy. MM. dd."
         binds()
     }
 
     private func binds() {
-        $task
-        .sink(receiveValue: { [weak self] task in
+        $writtenData
+        .sink(receiveValue: { [weak self] data in
             guard let self = self else { return }
 
-            self.duration = "\(task.duration ?? 0) perc"
-            self.writtenData = task.writtenData
-            self.typedData = task.typedData ?? ""
-            self.isCompleted = task.completed
-            if let date = task.deadline {
-                self.deadlineDate = date
-            } else {
-                self.deadlineText = "nincs megadva"
-            }
+            self.task.writtenData = data
         })
         .store(in: &subscriptions)
+
+        $typedData
+        .sink(receiveValue: { [weak self] data in
+            guard let self = self else { return }
+
+            self.task.typedData = data
+        })
+        .store(in: &subscriptions)
+
+        $isCompleted
+        .sink(receiveValue: { [weak self] data in
+            guard let self = self else { return }
+
+            self.task.completed = data
+        })
+        .store(in: &subscriptions)
+
+        $deadlineDate
+        .sink(receiveValue: { [weak self] data in
+            guard let self = self else { return }
+
+            self.task.deadline = data
+        })
+        .store(in: &subscriptions)
+
+        $task
+            .sink(receiveValue: { [weak self] task in
+                guard let self = self else { return }
+                print("update task")
+                DataBase.shared.update(task: task, projectId: self.project.orderId, groupId: self.group.orderId)
+            })
+            .store(in: &subscriptions)
 
         $deadlineDate
         .dropFirst()

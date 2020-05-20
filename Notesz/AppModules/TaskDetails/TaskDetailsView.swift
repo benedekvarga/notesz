@@ -70,6 +70,9 @@ struct TaskDetailsView: View {
                         .background(Color.clear)
                     if viewModel.penToolSelected {
                         PKCanvasViewRepresentable(
+                            task: $viewModel.task,
+                            project: $viewModel.project,
+                            group: $viewModel.group,
                             shouldClearData: $viewModel.shouldClearCanvas,
                             penColor: $viewModel.lineColor,
                             eraserSelected: $viewModel.isEraserSelected,

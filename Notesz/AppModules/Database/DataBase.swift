@@ -14,7 +14,9 @@ class DataBase {
 
     func update(task: Task, projectId: Int, groupId: Int) {
         if database.count > groupId, database[groupId].projects.count > projectId, database[groupId].projects[projectId].tasks.count > task.orderId {
+            print("task updated")
             database[groupId].projects[projectId].tasks[task.orderId] = task
+            print(database[groupId].projects[projectId].tasks[task.orderId])
         }
     }
 

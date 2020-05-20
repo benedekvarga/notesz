@@ -11,11 +11,15 @@ import PencilKit
 struct PKCanvasViewRepresentable: UIViewRepresentable {
     // MARK: - Properties
 
+    @Binding var task: Task
+    @Binding var project: Project
+    @Binding var group: Group
     @Binding var shouldClearData: Int
     @Binding var penColor: UIColor
     @Binding var eraserSelected: Bool
     @Binding var lineWidth: CGFloat
-    @State var data: Data?
+
+    var shouldSaveData = 0
 
     // MARK: - UIViewRepresentable functions
 
@@ -24,12 +28,29 @@ struct PKCanvasViewRepresentable: UIViewRepresentable {
         canvasView.layer.masksToBounds = false
         canvasView.allowsFingerDrawing = false
         canvasView.delegate = context.coordinator
+        if let data = self.task.writtenData {
+            do {
+                canvasView.drawing = try PKDrawing(data: data)
+            } catch {
+                print("cannot load drawing")
+            }
+        } else {
+            print("writtendata is nil")
+        }
         return canvasView
     }
 
     func updateUIView(_ uiView: PKCanvasView, context: Context) {
         if shouldClearData > 0 {
             uiView.drawing = PKDrawing()
+        } else {
+            if let data = self.task.writtenData, uiView.drawing.dataRepresentation() != task.writtenData {
+                do {
+                    uiView.drawing = try PKDrawing(data: data)
+                } catch {
+                    print("cannot load drawing")
+                }
+            }
         }
 
         if eraserSelected {
@@ -52,7 +73,8 @@ struct PKCanvasViewRepresentable: UIViewRepresentable {
 
         func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
             DispatchQueue.main.async {
-                self.canvas.data = canvasView.drawing.dataRepresentation()
+                self.canvas.task.writtenData = canvasView.drawing.dataRepresentation()
+                DataBase.shared.update(task: self.canvas.task, projectId: self.canvas.project.orderId, groupId: self.canvas.group.orderId)
                 self.canvas.shouldClearData = 0
             }
         }
