@@ -95,7 +95,7 @@ class MenuViewModel: ObservableObject, Identifiable {
     @Published public var data: [GroupViewModel] = []
 
     init() {
-        self.data = MockDataBase.shared.database.map { group in
+        self.data = DataBase.shared.database.map { group in
             return GroupViewModel(group: group)
         }
     }

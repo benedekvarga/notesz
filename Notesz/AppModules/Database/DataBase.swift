@@ -1,5 +1,5 @@
 //
-//  MockDataBase.swift
+//  DataBase.swift
 //  Notesz
 //
 //  Created by Varga Benedek on 2020. 05. 09..
@@ -7,10 +7,16 @@
 
 import Foundation
 
-class MockDataBase {
-    public static let shared = MockDataBase()
+class DataBase {
+    public static let shared = DataBase()
 
-    let database: [Group]
+    var database: [Group]
+
+    func update(task: Task, projectId: Int, groupId: Int) {
+        if database.count > groupId, database[groupId].projects.count > projectId, database[groupId].projects[projectId].tasks.count > task.orderId {
+            database[groupId].projects[projectId].tasks[task.orderId] = task
+        }
+    }
 
     private init() {
         self.database = [

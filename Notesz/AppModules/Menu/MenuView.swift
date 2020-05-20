@@ -38,7 +38,7 @@ struct MenuView: View {
                         }
                     ) {
                         ForEach(group.projects, id: \.self) { project in
-                            NavigationLink(destination: TaskListView(viewModel: TaskListViewModel(project: project.project))) {
+                            NavigationLink(destination: TaskListView(viewModel: TaskListViewModel(project: project.project, group: group.group))) {
                                 ProjectCellView(viewModel: ProjectCellViewModel(project: project.project))
                                 .contextMenu {
                                     Button(

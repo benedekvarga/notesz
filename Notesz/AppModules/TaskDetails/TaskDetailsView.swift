@@ -28,7 +28,7 @@ struct TaskDetailsView: View {
                             .fontWeight(.light)
                             .foregroundColor(.black)
                             .padding(.leading)
-                        Text(viewModel.project)
+                        Text(viewModel.project.name)
                             .font(.system(size: 12.0))
                             .fontWeight(.semibold)
                             .foregroundColor(.black)
@@ -322,14 +322,14 @@ struct TaskDetailsView: View {
         self.viewModel = viewModel
     }
 }
-
-struct TaskDetails_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskDetailsView(viewModel:
-            TaskDetailsViewModel(task:
-                Task(typedData: "Teszt cell", orderId: 0), project: "Háztartás"
-            )
-        )
-        .previewDevice(PreviewDevice(rawValue: "iPad Pro (11-inch)"))
-    }
-}
+//
+//struct TaskDetails_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TaskDetailsView(viewModel:
+//            TaskDetailsViewModel(task:
+//                Task(typedData: "Teszt cell", orderId: 0), project: "Háztartás"
+//            )
+//        )
+//        .previewDevice(PreviewDevice(rawValue: "iPad Pro (11-inch)"))
+//    }
+//}

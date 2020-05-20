@@ -16,7 +16,8 @@ class TaskDetailsViewModel: ObservableObject {
     private var dateFormatter = DateFormatter()
     @Published private var task: Task
 
-    @Published public var project: String
+    @Published public var project: Project
+    @Published public var group: Group
     @Published public var duration = ""
     @Published public var writtenData: Data?
     @Published public var typedData = ""
@@ -29,9 +30,10 @@ class TaskDetailsViewModel: ObservableObject {
     @Published public var deadlineText: String = ""
     @Published public var deadlineDate = Date()
 
-    init(task: Task, project: String) {
+    init(task: Task, project: Project, group: Group) {
         self.task = task
         self.project = project
+        self.group = group
         self.dateFormatter.dateFormat = "yyyy. MM. dd."
         binds()
     }

@@ -58,7 +58,9 @@ struct TaskCellView: View, RootViewProtocol {
                             self.viewModel.showDetails.toggle()
                         }
                         .sheet(isPresented: $viewModel.showDetails) {
-                            TaskDetailsView(viewModel: TaskDetailsViewModel(task: self.viewModel.task, project: self.viewModel.project))
+                            TaskDetailsView(
+                                viewModel: TaskDetailsViewModel(task: self.viewModel.task, project: self.viewModel.project, group: self.viewModel.group)
+                            )
                         }
                     Spacer()
                     Image(systemName: viewModel.penToolSelected ? "square.and.pencil" : "keyboard")
@@ -112,14 +114,14 @@ struct TaskCellView: View, RootViewProtocol {
         self.viewModel = viewModel
     }
 }
-
-struct TaskViewPreviews: PreviewProvider {
-    static var previews: some View {
-        TaskCellView(viewModel:
-            TaskCellViewModel(task:
-                Task(typedData: "Teszt cell", orderId: 0),
-                project: "Feladat"
-            )
-        )
-    }
-}
+//
+//struct TaskViewPreviews: PreviewProvider {
+//    static var previews: some View {
+//        TaskCellView(viewModel:
+//            TaskCellViewModel(task:
+//                Task(typedData: "Teszt cell", orderId: 0),
+//                project: "Feladat"
+//            )
+//        )
+//    }
+//}

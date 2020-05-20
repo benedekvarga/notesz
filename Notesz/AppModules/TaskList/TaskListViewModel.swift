@@ -10,7 +10,8 @@ import Combine
 class TaskListViewModel: ObservableObject, Identifiable {
     // MARK: - Properties
 
-    @Published private var project: Project
+    @Published public var project: Project
+    @Published public var group: Group
     private var subscriptions = Set<AnyCancellable>()
 
     @Published var dataSource: [TaskCellViewModel] = []
@@ -18,8 +19,9 @@ class TaskListViewModel: ObservableObject, Identifiable {
 
     // MARK: - Initialization
 
-    init(project: Project) {
+    init(project: Project, group: Group) {
         self.project = project
+        self.group = group
 
         binds()
     }
@@ -36,7 +38,7 @@ class TaskListViewModel: ObservableObject, Identifiable {
         .sink(receiveValue: { [weak self] project in
             guard let self = self else { return }
 
-            self.dataSource = project.tasks.map { TaskCellViewModel(task: $0, project: project.name) }
+            self.dataSource = project.tasks.map { TaskCellViewModel(task: $0, project: project, group: self.group ) }
             self.name = project.name
         })
         .store(in: &subscriptions)
