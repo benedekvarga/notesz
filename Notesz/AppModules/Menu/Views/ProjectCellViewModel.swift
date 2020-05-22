@@ -45,5 +45,14 @@ class ProjectCellViewModel: ObservableObject, Identifiable, Hashable, Equatable 
                 self.duration = "\(project.duration) perc"
             })
             .store(in: &subscriptions)
+
+        DataBase.shared.$shouldUpdateView
+        .sink(receiveValue: { _ in
+            print("should update project cell")
+            self.duration = "\(self.project.duration) perc"
+            let numberOfCompletedTasks = self.project.tasks.filter { $0.completed }.count
+            self.completed = "\(numberOfCompletedTasks)/\(self.project.tasks.count)"
+        })
+        .store(in: &subscriptions)
     }
 }

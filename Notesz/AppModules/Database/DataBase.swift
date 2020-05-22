@@ -7,16 +7,17 @@
 
 import Foundation
 
-class DataBase {
+class DataBase: ObservableObject {
     public static let shared = DataBase()
+
+    @Published public var shouldUpdateView = false
 
     var database: [Group]
 
     func update(task: Task, projectId: Int, groupId: Int) {
         if database.count > groupId, database[groupId].projects.count > projectId, database[groupId].projects[projectId].tasks.count > task.orderId {
-            print("task updated")
             database[groupId].projects[projectId].tasks[task.orderId] = task
-            print(database[groupId].projects[projectId].tasks[task.orderId])
+            shouldUpdateView = true
         }
     }
 

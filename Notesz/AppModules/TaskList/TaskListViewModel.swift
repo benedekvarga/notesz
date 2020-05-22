@@ -29,7 +29,10 @@ class TaskListViewModel: ObservableObject, Identifiable {
     // MARK: - Functions
 
     public func newTask() {
-        let task = Task(typedData: "", orderId: dataSource.count)
+        let orderId = DataBase.shared.database[group.orderId].projects[project.orderId].tasks.count
+        print(orderId)
+        let task = Task(typedData: "", orderId: orderId)
+        DataBase.shared.database[group.orderId].projects[project.orderId].tasks.append(task)
         project.tasks.append(task)
     }
 

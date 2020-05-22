@@ -30,9 +30,9 @@ struct CompareView: View {
                 .padding(.bottom, -6)
             ZStack(alignment: .topTrailing) {
                 PKCanvasViewRepresentable(
-                        task: .constant(Task(typedData: "", orderId: 20)),
-                        project: .constant(Project(name: "", orderId: 20, tasks: [])),
-                        group: .constant(Group(name: "", orderId: 20, projects: [])),
+                        task: .constant(Task(typedData: "", orderId: 0)),
+                        project: .constant(Project(name: "", orderId: 0, tasks: [Task(typedData: "", orderId: 0)])),
+                        group: .constant(Group(name: "", orderId: 0, projects: [Project(name: "", orderId: 0, tasks: [Task(typedData: "", orderId: 0)])])),
                         shouldClearData: $shouldClearPKCanvas,
                         penColor: $selectedPKCanvasColor,
                         eraserSelected: $pkEraserSelected,

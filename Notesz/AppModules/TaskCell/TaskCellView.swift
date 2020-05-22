@@ -117,14 +117,3 @@ struct TaskCellView: View, RootViewProtocol {
         self.viewModel = viewModel
     }
 }
-//
-//struct TaskViewPreviews: PreviewProvider {
-//    static var previews: some View {
-//        TaskCellView(viewModel:
-//            TaskCellViewModel(task:
-//                Task(typedData: "Teszt cell", orderId: 0),
-//                project: "Feladat"
-//            )
-//        )
-//    }
-//}

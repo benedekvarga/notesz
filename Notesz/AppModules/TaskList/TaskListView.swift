@@ -42,9 +42,3 @@ struct TaskListView: View {
         }
     }
 }
-//
-//struct TaskListViewPreviews: PreviewProvider {
-//    static var previews: some View {
-//        TaskListView(viewModel: TaskListViewModel(project: (DataBase.shared.database.first?.projects.first)!))
-//    }
-//}

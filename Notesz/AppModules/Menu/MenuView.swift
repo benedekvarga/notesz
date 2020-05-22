@@ -75,7 +75,7 @@ struct MenuView: View {
                     .padding(12)
                     .padding(.trailing, 24)
                     .onTapGesture {
-
+                        print("Add new group")
                     }
                 NavigationLink(destination: CompareView()) {
                     ZStack {

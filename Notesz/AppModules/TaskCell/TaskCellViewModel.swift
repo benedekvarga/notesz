@@ -71,8 +71,6 @@ class TaskCellViewModel: ObservableObject, Identifiable {
 
         $showDetails
         .sink(receiveValue: { _ in
-            print("updateView")
-            
             self.fetchTask()
             self.updateView()
         })

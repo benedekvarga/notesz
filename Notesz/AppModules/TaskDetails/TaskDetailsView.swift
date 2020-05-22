@@ -325,14 +325,3 @@ struct TaskDetailsView: View {
         self.viewModel = viewModel
     }
 }
-//
-//struct TaskDetails_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TaskDetailsView(viewModel:
-//            TaskDetailsViewModel(task:
-//                Task(typedData: "Teszt cell", orderId: 0), project: "Háztartás"
-//            )
-//        )
-//        .previewDevice(PreviewDevice(rawValue: "iPad Pro (11-inch)"))
-//    }
-//}

@@ -30,10 +30,6 @@ struct Group: Ordered {
     }
 }
 
-extension Group {
-
-}
-
 extension Group: Hashable, Equatable {
     static func == (lhs: Group, rhs: Group) -> Bool {
         return

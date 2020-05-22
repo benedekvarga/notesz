@@ -29,11 +29,7 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Frameworks
   - Scripts
   - SupportFiles
-  - Frontier/CoreModules
-  - Presentation/3rdParty
-  - "*/Mocks"
-  - FrontierUnitTests/Mocks
-  - Architecture/VIPER/VIPER.xctemplate
+  - NoteszTests/
 
 disabled_rules: # rule identifiers to exclude from running
   - force_cast
